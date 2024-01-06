@@ -1,15 +1,15 @@
-import 'package:cuckoo_starter_kit/data/repositories/user_repository.dart';
-import 'package:cuckoo_starter_kit/data/services/auth_service.dart';
-import 'package:cuckoo_starter_kit/data/services/database_service.dart';
-import 'package:cuckoo_starter_kit/data/services/supabase_service.dart';
-import 'package:cuckoo_starter_kit/domain/repositories/iuser_repository.dart';
-import 'package:cuckoo_starter_kit/domain/services/iauth_service.dart';
-import 'package:cuckoo_starter_kit/domain/services/idatabase_service.dart';
-import 'package:cuckoo_starter_kit/app/features/auth/cubit/auth_cubit.dart';
-import 'package:cuckoo_starter_kit/app/features/home/cubit/home_cubit.dart';
-import 'package:cuckoo_starter_kit/app/features/settings/cubit/settings_cubit.dart';
-import 'package:cuckoo_starter_kit/app/features/startup/cubit/startup_cubit.dart';
-import 'package:cuckoo_starter_kit/app/features/user_info/cubit/user_info_cubit.dart';
+import 'package:orders_accountant/data/repositories/user_repository.dart';
+import 'package:orders_accountant/data/services/auth_service.dart';
+import 'package:orders_accountant/data/services/database_service.dart';
+import 'package:orders_accountant/data/services/supabase_service.dart';
+import 'package:orders_accountant/domain/repositories/iuser_repository.dart';
+import 'package:orders_accountant/domain/services/iauth_service.dart';
+import 'package:orders_accountant/domain/services/idatabase_service.dart';
+import 'package:orders_accountant/app/features/auth/cubit/auth_cubit.dart';
+import 'package:orders_accountant/app/features/home/cubit/home_cubit.dart';
+import 'package:orders_accountant/app/features/settings/cubit/settings_cubit.dart';
+import 'package:orders_accountant/app/features/startup/cubit/startup_cubit.dart';
+import 'package:orders_accountant/app/features/user_info/cubit/user_info_cubit.dart';
 import 'package:get_it/get_it.dart';
 
 final locator = GetIt.instance;

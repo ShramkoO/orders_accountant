@@ -1,6 +1,6 @@
 {
-    "name": "cuckoo_starter_kit",
-    "short_name": "cuckoo_starter_kit",
+    "name": "orders_accountant",
+    "short_name": "orders_accountant",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

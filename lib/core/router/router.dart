@@ -1,17 +1,17 @@
 import 'dart:async';
-import 'package:cuckoo_starter_kit/app/features/auth/screens/email_confirmed_screen.dart';
-import 'package:cuckoo_starter_kit/core/constants/common_libs.dart';
-import 'package:cuckoo_starter_kit/app/widgets/app_scaffold.dart';
-import 'package:cuckoo_starter_kit/app/features/onboarding/onboarding_screen.dart';
-import 'package:cuckoo_starter_kit/app/features/auth/screens/forgot_password_screen.dart';
-import 'package:cuckoo_starter_kit/app/features/auth/screens/new_password_screen.dart';
-import 'package:cuckoo_starter_kit/app/features/auth/screens/sign_in_screen.dart';
-import 'package:cuckoo_starter_kit/app/features/auth/screens/sign_up_screen.dart';
-import 'package:cuckoo_starter_kit/app/features/home/screens/home_screen.dart';
-import 'package:cuckoo_starter_kit/app/features/info/info_screen.dart';
-import 'package:cuckoo_starter_kit/app/features/settings/screens/settings_screen.dart';
-import 'package:cuckoo_starter_kit/app/features/startup/screens/startup_screen.dart';
-import 'package:cuckoo_starter_kit/app/widgets/page_scaffold.dart';
+import 'package:orders_accountant/app/features/auth/screens/email_confirmed_screen.dart';
+import 'package:orders_accountant/core/constants/common_libs.dart';
+import 'package:orders_accountant/app/widgets/app_scaffold.dart';
+import 'package:orders_accountant/app/features/onboarding/onboarding_screen.dart';
+import 'package:orders_accountant/app/features/auth/screens/forgot_password_screen.dart';
+import 'package:orders_accountant/app/features/auth/screens/new_password_screen.dart';
+import 'package:orders_accountant/app/features/auth/screens/sign_in_screen.dart';
+import 'package:orders_accountant/app/features/auth/screens/sign_up_screen.dart';
+import 'package:orders_accountant/app/features/home/screens/home_screen.dart';
+import 'package:orders_accountant/app/features/info/info_screen.dart';
+import 'package:orders_accountant/app/features/settings/screens/settings_screen.dart';
+import 'package:orders_accountant/app/features/startup/screens/startup_screen.dart';
+import 'package:orders_accountant/app/widgets/page_scaffold.dart';
 import 'package:flutter/cupertino.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey =

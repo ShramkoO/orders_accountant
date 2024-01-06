@@ -1,5 +1,5 @@
 import 'package:bloc_test/bloc_test.dart';
-import 'package:cuckoo_starter_kit/app/features/user_info/cubit/user_info_cubit.dart';
+import 'package:orders_accountant/app/features/user_info/cubit/user_info_cubit.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'mocks.dart';

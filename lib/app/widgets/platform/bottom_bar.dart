@@ -1,5 +1,5 @@
-import 'package:cuckoo_starter_kit/app/widgets/app_scaffold.dart';
-import 'package:cuckoo_starter_kit/core/constants/common_libs.dart';
+import 'package:orders_accountant/app/widgets/app_scaffold.dart';
+import 'package:orders_accountant/core/constants/common_libs.dart';
 import 'package:flutter/cupertino.dart';
 
 abstract interface class IBottomBar {

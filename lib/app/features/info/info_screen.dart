@@ -1,7 +1,7 @@
-import 'package:cuckoo_starter_kit/app/widgets/app_scaffold.dart';
-import 'package:cuckoo_starter_kit/app/widgets/controls/buttons.dart';
-import 'package:cuckoo_starter_kit/app/widgets/platform/platform_widget_factory.dart';
-import 'package:cuckoo_starter_kit/core/constants/common_libs.dart';
+import 'package:orders_accountant/app/widgets/app_scaffold.dart';
+import 'package:orders_accountant/app/widgets/controls/buttons.dart';
+import 'package:orders_accountant/app/widgets/platform/platform_widget_factory.dart';
+import 'package:orders_accountant/core/constants/common_libs.dart';
 import 'package:gap/gap.dart';
 
 class InfoScreen extends StatefulWidget {

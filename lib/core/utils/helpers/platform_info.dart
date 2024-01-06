@@ -1,4 +1,4 @@
-import 'package:cuckoo_starter_kit/core/constants/common_libs.dart';
+import 'package:orders_accountant/core/constants/common_libs.dart';
 import 'package:flutter/foundation.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 

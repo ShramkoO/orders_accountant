@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:cuckoo_starter_kit/main.dart';
+import 'package:orders_accountant/main.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingDots extends StatelessWidget {

@@ -1,11 +1,11 @@
 import 'dart:async';
 
-import 'package:cuckoo_starter_kit/main.dart';
-import 'package:cuckoo_starter_kit/domain/repositories/iuser_repository.dart';
-import 'package:cuckoo_starter_kit/core/router/router.dart';
-import 'package:cuckoo_starter_kit/data/services/auth_service.dart';
-import 'package:cuckoo_starter_kit/app/features/user_info/cubit/user_info_cubit.dart';
-import 'package:cuckoo_starter_kit/core/utils/helpers/debug_log.dart';
+import 'package:orders_accountant/main.dart';
+import 'package:orders_accountant/domain/repositories/iuser_repository.dart';
+import 'package:orders_accountant/core/router/router.dart';
+import 'package:orders_accountant/data/services/auth_service.dart';
+import 'package:orders_accountant/app/features/user_info/cubit/user_info_cubit.dart';
+import 'package:orders_accountant/core/utils/helpers/debug_log.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';

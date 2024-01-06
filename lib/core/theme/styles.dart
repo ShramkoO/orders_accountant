@@ -1,6 +1,6 @@
 // ignore_for_file: library_private_types_in_public_api
 
-import 'package:cuckoo_starter_kit/core/constants/common_libs.dart';
+import 'package:orders_accountant/core/constants/common_libs.dart';
 
 export 'colors.dart';
 

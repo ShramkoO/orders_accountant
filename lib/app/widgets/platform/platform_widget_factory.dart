@@ -1,10 +1,10 @@
-import 'package:cuckoo_starter_kit/app/widgets/platform/activity_indicator.dart';
-import 'package:cuckoo_starter_kit/app/widgets/platform/bottom_bar.dart';
-import 'package:cuckoo_starter_kit/app/widgets/platform/navigation_bar.dart';
-import 'package:cuckoo_starter_kit/app/widgets/platform/popup.dart';
-import 'package:cuckoo_starter_kit/app/widgets/platform/switch.dart';
-import 'package:cuckoo_starter_kit/app/widgets/platform/text_field.dart';
-import 'package:cuckoo_starter_kit/app/widgets/platform/time_picker.dart';
+import 'package:orders_accountant/app/widgets/platform/activity_indicator.dart';
+import 'package:orders_accountant/app/widgets/platform/bottom_bar.dart';
+import 'package:orders_accountant/app/widgets/platform/navigation_bar.dart';
+import 'package:orders_accountant/app/widgets/platform/popup.dart';
+import 'package:orders_accountant/app/widgets/platform/switch.dart';
+import 'package:orders_accountant/app/widgets/platform/text_field.dart';
+import 'package:orders_accountant/app/widgets/platform/time_picker.dart';
 
 abstract interface class IPlatformWidgetsFactory {
   INavigationBar createNavigationBar();

@@ -1,4 +1,4 @@
-import 'package:cuckoo_starter_kit/data/services/auth_service.dart';
+import 'package:orders_accountant/data/services/auth_service.dart';
 
 abstract class IAuthService {
   Future<void> init();

@@ -1,19 +1,19 @@
-import 'package:cuckoo_starter_kit/app/widgets/app_wrapper.dart';
-import 'package:cuckoo_starter_kit/app/features/settings/cubit/settings_cubit.dart';
+import 'package:orders_accountant/app/widgets/app_wrapper.dart';
+import 'package:orders_accountant/app/features/settings/cubit/settings_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'core/constants/common_libs.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class CuckooStarterKitApp extends StatefulWidget {
-  const CuckooStarterKitApp({super.key});
+class OrdersAccountantApp extends StatefulWidget {
+  const OrdersAccountantApp({super.key});
 
   @override
-  State<CuckooStarterKitApp> createState() => _CuckooStarterKitAppState();
+  State<OrdersAccountantApp> createState() => _OrdersAccountantAppState();
 }
 
-class _CuckooStarterKitAppState extends State<CuckooStarterKitApp> {
+class _OrdersAccountantAppState extends State<OrdersAccountantApp> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SettingsCubit, SettingsState>(

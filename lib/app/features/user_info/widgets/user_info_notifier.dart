@@ -1,5 +1,5 @@
-import 'package:cuckoo_starter_kit/core/constants/common_libs.dart';
-import 'package:cuckoo_starter_kit/app/features/user_info/cubit/user_info_cubit.dart';
+import 'package:orders_accountant/core/constants/common_libs.dart';
+import 'package:orders_accountant/app/features/user_info/cubit/user_info_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class UserInfoNotifier extends StatefulWidget {

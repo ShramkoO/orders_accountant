@@ -1,5 +1,5 @@
-import 'package:cuckoo_starter_kit/core/constants/common_libs.dart';
-import 'package:cuckoo_starter_kit/app/features/onboarding/widgets/onboarding_content.dart';
+import 'package:orders_accountant/core/constants/common_libs.dart';
+import 'package:orders_accountant/app/features/onboarding/widgets/onboarding_content.dart';
 
 class OnboardingPageModel {
   final String? title;

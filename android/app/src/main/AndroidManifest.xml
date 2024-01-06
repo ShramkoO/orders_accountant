@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.cuckoocoding.cuckoo_starter_kit">
+    package="com.shramkoo.ordersaccountant">
    <application
-        android:label="cuckoo_starter_kit"
+        android:label="orders_accountant"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

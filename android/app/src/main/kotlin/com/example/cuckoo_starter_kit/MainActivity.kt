@@ -1,4 +1,4 @@
-package com.cuckoocoding.cuckoo_starter_kit
+package com.shramkoo.ordersaccountant
 
 import io.flutter.embedding.android.FlutterActivity
 

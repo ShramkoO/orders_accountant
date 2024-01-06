@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:cuckoo_starter_kit/domain/services/iauth_service.dart';
+import 'package:orders_accountant/domain/services/iauth_service.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AuthService implements IAuthService {

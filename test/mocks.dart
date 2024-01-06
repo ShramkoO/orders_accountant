@@ -1,10 +1,10 @@
 import 'package:bloc_test/bloc_test.dart';
-import 'package:cuckoo_starter_kit/app/features/auth/cubit/auth_cubit.dart';
-import 'package:cuckoo_starter_kit/app/features/settings/cubit/settings_cubit.dart';
-import 'package:cuckoo_starter_kit/app/features/user_info/cubit/user_info_cubit.dart';
-import 'package:cuckoo_starter_kit/domain/repositories/iuser_repository.dart';
-import 'package:cuckoo_starter_kit/domain/services/iauth_service.dart';
-import 'package:cuckoo_starter_kit/domain/services/idatabase_service.dart';
+import 'package:orders_accountant/app/features/auth/cubit/auth_cubit.dart';
+import 'package:orders_accountant/app/features/settings/cubit/settings_cubit.dart';
+import 'package:orders_accountant/app/features/user_info/cubit/user_info_cubit.dart';
+import 'package:orders_accountant/domain/repositories/iuser_repository.dart';
+import 'package:orders_accountant/domain/services/iauth_service.dart';
+import 'package:orders_accountant/domain/services/idatabase_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mocktail/mocktail.dart';
 

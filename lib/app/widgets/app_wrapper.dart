@@ -1,5 +1,5 @@
-import 'package:cuckoo_starter_kit/core/constants/common_libs.dart';
-import 'package:cuckoo_starter_kit/app/features/user_info/widgets/user_info_notifier.dart';
+import 'package:orders_accountant/core/constants/common_libs.dart';
+import 'package:orders_accountant/app/features/user_info/widgets/user_info_notifier.dart';
 
 class AppWrapper extends StatelessWidget {
   const AppWrapper({Key? key, required this.child}) : super(key: key);

@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.cuckoocoding" "\0"
-            VALUE "FileDescription", "cuckoo_starter_kit" "\0"
+            VALUE "FileDescription", "orders_accountant" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "cuckoo_starter_kit" "\0"
+            VALUE "InternalName", "orders_accountant" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2022 com.cuckoocoding. All rights reserved." "\0"
-            VALUE "OriginalFilename", "cuckoo_starter_kit.exe" "\0"
-            VALUE "ProductName", "cuckoo_starter_kit" "\0"
+            VALUE "OriginalFilename", "orders_accountant.exe" "\0"
+            VALUE "ProductName", "orders_accountant" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

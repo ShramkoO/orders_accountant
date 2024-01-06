@@ -1,5 +1,5 @@
-import 'package:cuckoo_starter_kit/main.dart';
-import 'package:cuckoo_starter_kit/app/features/onboarding/widgets/onboarding_page.dart';
+import 'package:orders_accountant/main.dart';
+import 'package:orders_accountant/app/features/onboarding/widgets/onboarding_page.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingFooter extends StatelessWidget {

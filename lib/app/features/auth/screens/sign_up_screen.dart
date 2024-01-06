@@ -1,8 +1,8 @@
-import 'package:cuckoo_starter_kit/app/features/auth/cubit/auth_cubit.dart';
-import 'package:cuckoo_starter_kit/app/features/user_info/cubit/user_info_cubit.dart';
-import 'package:cuckoo_starter_kit/app/widgets/controls/buttons.dart';
-import 'package:cuckoo_starter_kit/app/widgets/controls/checkbox.dart';
-import 'package:cuckoo_starter_kit/core/constants/common_libs.dart';
+import 'package:orders_accountant/app/features/auth/cubit/auth_cubit.dart';
+import 'package:orders_accountant/app/features/user_info/cubit/user_info_cubit.dart';
+import 'package:orders_accountant/app/widgets/controls/buttons.dart';
+import 'package:orders_accountant/app/widgets/controls/checkbox.dart';
+import 'package:orders_accountant/core/constants/common_libs.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 

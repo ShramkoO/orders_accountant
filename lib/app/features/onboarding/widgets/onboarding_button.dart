@@ -1,5 +1,5 @@
-import 'package:cuckoo_starter_kit/main.dart';
-import 'package:cuckoo_starter_kit/app/widgets/controls/buttons.dart';
+import 'package:orders_accountant/main.dart';
+import 'package:orders_accountant/app/widgets/controls/buttons.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingButton extends StatelessWidget {

@@ -1,7 +1,7 @@
-import 'package:cuckoo_starter_kit/core/resources/supabase_tables.dart';
-import 'package:cuckoo_starter_kit/data/dto/app_user_dto.dart';
-import 'package:cuckoo_starter_kit/domain/models/app_user.dart';
-import 'package:cuckoo_starter_kit/domain/services/idatabase_service.dart';
+import 'package:orders_accountant/core/resources/supabase_tables.dart';
+import 'package:orders_accountant/data/dto/app_user_dto.dart';
+import 'package:orders_accountant/domain/models/app_user.dart';
+import 'package:orders_accountant/domain/services/idatabase_service.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class DatabaseService implements IDatabaseService {

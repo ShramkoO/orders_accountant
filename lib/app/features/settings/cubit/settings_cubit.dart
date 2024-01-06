@@ -1,6 +1,6 @@
-import 'package:cuckoo_starter_kit/app/widgets/platform/platform_widget_factory.dart';
-import 'package:cuckoo_starter_kit/core/constants/common_libs.dart';
-import 'package:cuckoo_starter_kit/core/utils/helpers/save_load_mixin.dart';
+import 'package:orders_accountant/app/widgets/platform/platform_widget_factory.dart';
+import 'package:orders_accountant/core/constants/common_libs.dart';
+import 'package:orders_accountant/core/utils/helpers/save_load_mixin.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl_standalone.dart';

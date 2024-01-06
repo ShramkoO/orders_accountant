@@ -1,6 +1,6 @@
-import 'package:cuckoo_starter_kit/main.dart';
-import 'package:cuckoo_starter_kit/app/features/onboarding/widgets/onboarding_page.dart';
-import 'package:cuckoo_starter_kit/core/theme/styles.dart';
+import 'package:orders_accountant/main.dart';
+import 'package:orders_accountant/app/features/onboarding/widgets/onboarding_page.dart';
+import 'package:orders_accountant/core/theme/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 

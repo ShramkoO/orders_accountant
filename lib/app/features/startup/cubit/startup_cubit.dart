@@ -1,13 +1,13 @@
 import 'dart:async';
 
 // import '../../../trash/iauth_repository.dart';
-import 'package:cuckoo_starter_kit/domain/repositories/iuser_repository.dart';
-import 'package:cuckoo_starter_kit/domain/services/iauth_service.dart';
+import 'package:orders_accountant/domain/repositories/iuser_repository.dart';
+import 'package:orders_accountant/domain/services/iauth_service.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_displaymode/flutter_displaymode.dart';
 
-import 'package:cuckoo_starter_kit/core/constants/common_libs.dart';
+import 'package:orders_accountant/core/constants/common_libs.dart';
 
 part 'startup_state.dart';
 

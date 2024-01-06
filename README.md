@@ -1,3 +1,3 @@
-# 🔥 Cuckoo Starter Kit
+# 🔥 Orders Accountant based on CuckooCoding Starter Kit App
 
 ## 

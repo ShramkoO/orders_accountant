@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:cuckoo_starter_kit/data/services/auth_service.dart';
-import 'package:cuckoo_starter_kit/domain/models/app_user.dart';
-import 'package:cuckoo_starter_kit/core/common/domain/data_state.dart';
+import 'package:orders_accountant/data/services/auth_service.dart';
+import 'package:orders_accountant/domain/models/app_user.dart';
+import 'package:orders_accountant/core/common/domain/data_state.dart';
 
 abstract class IUserRepository {
   Future<void> init();

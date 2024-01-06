@@ -1,4 +1,4 @@
-import 'package:cuckoo_starter_kit/domain/models/app_user.dart';
+import 'package:orders_accountant/domain/models/app_user.dart';
 import 'package:test/test.dart';
 
 void main() {

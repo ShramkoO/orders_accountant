@@ -1,4 +1,4 @@
-import 'package:cuckoo_starter_kit/core/constants/common_libs.dart';
+import 'package:orders_accountant/core/constants/common_libs.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LocaleLogic {

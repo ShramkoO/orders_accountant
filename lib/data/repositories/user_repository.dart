@@ -1,12 +1,12 @@
 import 'dart:async';
 
-import 'package:cuckoo_starter_kit/domain/models/app_user.dart';
-import 'package:cuckoo_starter_kit/core/common/domain/base_repository.dart';
-import 'package:cuckoo_starter_kit/domain/repositories/iuser_repository.dart';
-import 'package:cuckoo_starter_kit/domain/services/iauth_service.dart';
-import 'package:cuckoo_starter_kit/domain/services/idatabase_service.dart';
-import 'package:cuckoo_starter_kit/data/services/auth_service.dart';
-import 'package:cuckoo_starter_kit/core/common/domain/data_state.dart';
+import 'package:orders_accountant/domain/models/app_user.dart';
+import 'package:orders_accountant/core/common/domain/base_repository.dart';
+import 'package:orders_accountant/domain/repositories/iuser_repository.dart';
+import 'package:orders_accountant/domain/services/iauth_service.dart';
+import 'package:orders_accountant/domain/services/idatabase_service.dart';
+import 'package:orders_accountant/data/services/auth_service.dart';
+import 'package:orders_accountant/core/common/domain/data_state.dart';
 
 class UserRepository extends BaseRepository implements IUserRepository {
   UserRepository({

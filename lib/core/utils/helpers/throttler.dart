@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:cuckoo_starter_kit/core/constants/common_libs.dart';
+import 'package:orders_accountant/core/constants/common_libs.dart';
 
 class Throttler {
   final Duration interval;

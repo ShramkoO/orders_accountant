@@ -1,12 +1,12 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:cuckoo_starter_kit/core/constants/assets.dart';
-import 'package:cuckoo_starter_kit/main.dart';
-import 'package:cuckoo_starter_kit/core/router/router.dart';
-import 'package:cuckoo_starter_kit/app/features/onboarding/widgets/onboarding_button.dart';
-import 'package:cuckoo_starter_kit/app/features/onboarding/widgets/onboarding_dots.dart';
-import 'package:cuckoo_starter_kit/app/features/onboarding/widgets/onboarding_page.dart';
+import 'package:orders_accountant/core/constants/assets.dart';
+import 'package:orders_accountant/main.dart';
+import 'package:orders_accountant/core/router/router.dart';
+import 'package:orders_accountant/app/features/onboarding/widgets/onboarding_button.dart';
+import 'package:orders_accountant/app/features/onboarding/widgets/onboarding_dots.dart';
+import 'package:orders_accountant/app/features/onboarding/widgets/onboarding_page.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingScreen extends StatefulWidget {
