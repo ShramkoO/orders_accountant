@@ -1,0 +1,14 @@
+
+#This is a configuration file for the flutter_native_splash package
+
+flutter_native_splash:
+  
+  # you can set either color or an image for the first moments the app is launched
+  # also there a lot of other options you can use
+
+  color: "#00F8AE"
+  #background_image: "assets/background.png"
+
+  image: assets/images/common/app-logo.png
+
+  #for full description refer to https://pub.dev/packages/flutter_native_splash
