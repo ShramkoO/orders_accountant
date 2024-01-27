@@ -39,7 +39,7 @@ class _SignInScreenState extends State<SignInScreen> {
       listenWhen: (previous, current) => previous != current,
       listener: (context, state) async {
         if (state is Authenticated) {
-          appRouter.go(ScreenPaths.home);
+          appRouter.go(ScreenPaths.products);
         }
       },
       builder: (context, state) {

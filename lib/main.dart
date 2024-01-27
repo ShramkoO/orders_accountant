@@ -1,3 +1,6 @@
+import 'package:orders_accountant/app/features/orders/cubit/orders_cubit.dart';
+import 'package:orders_accountant/app/features/products/cubit/products_cubit.dart';
+import 'package:orders_accountant/app/features/statistics/cubit/statistics_cubit.dart';
 import 'package:orders_accountant/core/di/locator.dart';
 import 'package:orders_accountant/app/features/auth/cubit/auth_cubit.dart';
 import 'package:orders_accountant/app/features/home/cubit/home_cubit.dart';
@@ -33,6 +36,9 @@ StartupCubit get startupCubit => locator();
 UserInfoCubit get userInfoCubit => locator();
 AuthCubit get authCubit => locator();
 HomeCubit get homeCubit => locator();
+ProductsCubit get productsCubit => locator();
+OrdersCubit get ordersCubit => locator();
+StatisticsCubit get statisticsCubit => locator();
 
 LocaleLogic localeLogic = LocaleLogic();
 AppLocalizations get strings => localeLogic.strings;
@@ -61,6 +67,15 @@ Widget provideBlocsTo(Widget child) {
       ),
       BlocProvider<HomeCubit>(
         create: (_) => homeCubit,
+      ),
+      BlocProvider<ProductsCubit>(
+        create: (_) => productsCubit,
+      ),
+      BlocProvider<OrdersCubit>(
+        create: (_) => ordersCubit,
+      ),
+      BlocProvider<StatisticsCubit>(
+        create: (_) => statisticsCubit,
       ),
     ],
     child: BlocListener<SettingsCubit, SettingsState>(

@@ -1,5 +1,8 @@
 import 'dart:async';
 import 'package:orders_accountant/app/features/auth/screens/email_confirmed_screen.dart';
+import 'package:orders_accountant/app/features/orders/orders_screen.dart';
+import 'package:orders_accountant/app/features/products/products_screen.dart';
+import 'package:orders_accountant/app/features/statistics/statistics_screen.dart';
 import 'package:orders_accountant/core/constants/common_libs.dart';
 import 'package:orders_accountant/app/widgets/app_scaffold.dart';
 import 'package:orders_accountant/app/features/onboarding/onboarding_screen.dart';
@@ -31,13 +34,17 @@ class ScreenPaths {
   static String forgotPassword = ForgotPasswordScreen.routeName;
   static String newPassword = NewPasswordScreen.routeName;
   static String emailConfirmed = EmailConfirmedScreen.routeName;
+
+  static String products = ProductsScreen.routeName;
+  static String orders = OrdersScreen.routeName;
+  static String statistics = StatisticsScreen.routeName;
 }
 
 // Add new AppRoutes here, using the Screenpaths above
 final appRouter = GoRouter(
   navigatorKey: _rootNavigatorKey,
   redirect: _handleRedirect,
-  initialLocation: ScreenPaths.home,
+  initialLocation: ScreenPaths.products,
   routes: [
     ShellRoute(
       parentNavigatorKey: _rootNavigatorKey,
@@ -94,27 +101,49 @@ final appRouter = GoRouter(
       branches: [
         StatefulShellBranch(routes: [
           AppRoute(
-            ScreenPaths.home,
-            (_) => const HomeScreen(),
-            title: 'Home',
+            ScreenPaths.products,
+            (_) => const ProductsScreen(),
+            title: 'Товари',
           ),
         ]),
-        StatefulShellBranch(
-          routes: [
-            AppRoute(
-              ScreenPaths.info,
-              (_) => const InfoScreen(),
-              title: 'Info',
-            ),
-          ],
-        ),
         StatefulShellBranch(routes: [
           AppRoute(
-            ScreenPaths.settings,
-            (_) => const SettingsScreen(),
-            title: 'Settings',
+            ScreenPaths.orders,
+            (_) => const OrdersScreen(),
+            title: 'Замовлення',
           ),
         ]),
+        StatefulShellBranch(routes: [
+          AppRoute(
+            ScreenPaths.statistics,
+            (_) => const StatisticsScreen(),
+            title: 'Стастистика',
+          ),
+        ]),
+
+        // StatefulShellBranch(routes: [
+        //   AppRoute(
+        //     ScreenPaths.home,
+        //     (_) => const HomeScreen(),
+        //     title: 'Home',
+        //   ),
+        // ]),
+        // StatefulShellBranch(
+        //   routes: [
+        //     AppRoute(
+        //       ScreenPaths.info,
+        //       (_) => const InfoScreen(),
+        //       title: 'Info',
+        //     ),
+        //   ],
+        // ),
+        // StatefulShellBranch(routes: [
+        //   AppRoute(
+        //     ScreenPaths.settings,
+        //     (_) => const SettingsScreen(),
+        //     title: 'Settings',
+        //   ),
+        // ]),
       ],
     ),
   ],

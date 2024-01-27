@@ -28,7 +28,7 @@ class _EmailConfirmedScreenState extends State<EmailConfirmedScreen>
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       _controller.forward();
       Future.delayed(const Duration(seconds: 3), () {
-        appRouter.go(ScreenPaths.home);
+        appRouter.go(ScreenPaths.products);
       });
     });
     super.initState();

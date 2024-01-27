@@ -19,11 +19,22 @@ class AndroidBottomBar implements IBottomBar {
     required int selectedIndex,
     required Function(int) onSelected,
   }) {
-    return NavigationBar(
-      elevation: 1,
-      selectedIndex: selectedIndex,
-      destinations: items,
-      onDestinationSelected: onSelected,
+    return NavigationBarTheme(
+      data: NavigationBarThemeData(
+        labelTextStyle: MaterialStateProperty.resolveWith<TextStyle>(
+          (Set<MaterialState> states) => states.contains(MaterialState.selected)
+              ? TextStyle(
+                  color: colors.lavenderGrey, fontWeight: FontWeight.w500)
+              : TextStyle(color: colors.periwinkleBlue),
+        ),
+      ),
+      child: NavigationBar(
+        elevation: 1,
+        selectedIndex: selectedIndex,
+        destinations: items,
+        onDestinationSelected: onSelected,
+        height: 64,
+      ),
     );
   }
 }
@@ -39,11 +50,19 @@ class IosBottomBar implements IBottomBar {
   }) {
     return CupertinoTabBar(
       items: items
-          .map((AppNavigationItem t) => BottomNavigationBarItem(
-              icon: t.icon, label: t.label, activeIcon: t.selectedIcon))
+          .map(
+            (AppNavigationItem navigationItem) => BottomNavigationBarItem(
+              icon: navigationItem.icon,
+              label: navigationItem.label,
+              activeIcon: navigationItem.selectedIcon,
+            ),
+          )
           .toList(),
+      activeColor: colors.lavenderGrey,
       currentIndex: selectedIndex,
+      inactiveColor: colors.periwinkleBlue,
       onTap: onSelected,
+      height: 64,
     );
   }
 }

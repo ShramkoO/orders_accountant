@@ -1,3 +1,6 @@
+import 'package:orders_accountant/app/features/orders/cubit/orders_cubit.dart';
+import 'package:orders_accountant/app/features/products/cubit/products_cubit.dart';
+import 'package:orders_accountant/app/features/statistics/cubit/statistics_cubit.dart';
 import 'package:orders_accountant/data/repositories/user_repository.dart';
 import 'package:orders_accountant/data/services/auth_service.dart';
 import 'package:orders_accountant/data/services/database_service.dart';
@@ -40,4 +43,7 @@ Future<void> configureInjection() async {
       ));
 
   locator.registerLazySingleton<HomeCubit>(() => HomeCubit());
+  locator.registerLazySingleton<ProductsCubit>(() => ProductsCubit());
+  locator.registerLazySingleton<OrdersCubit>(() => OrdersCubit());
+  locator.registerLazySingleton<StatisticsCubit>(() => StatisticsCubit());
 }

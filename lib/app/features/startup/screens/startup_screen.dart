@@ -55,7 +55,7 @@ class _StartupScreenState extends State<StartupScreen>
         if (authCubit.state is PasswordRecovery) {
           appRouter.go(ScreenPaths.newPassword);
         } else if (authCubit.state is Authenticated) {
-          appRouter.go(ScreenPaths.home);
+          appRouter.go(ScreenPaths.products);
         } else {
           if (settingsCubit.state.hasCompletedOnboarding) {
             appRouter.go(ScreenPaths.signUp);

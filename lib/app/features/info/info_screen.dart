@@ -26,193 +26,193 @@ class _InfoScreenState extends State<InfoScreen> {
       padding: EdgeInsets.all(styles.insets.body),
       child: ListView(
         children: [
-          ExpansionTile(
-            title: Text('Buttons'),
-            children: [
-              WidgetPreview(
-                text: 'AppButton.text()',
-                widget: AppButton.text(
-                  text: 'Button',
-                  onPressed: () {},
-                ),
-              ),
-              WidgetPreview(
-                text: 'AppButton.filled()',
-                widget: AppButton.filled(
-                  text: 'Button',
-                  onPressed: () {},
-                ),
-              ),
-              WidgetPreview(
-                text: 'AppButton.icon()',
-                widget: AppButton.icon(
-                  icon: Icon(Icons.ads_click),
-                  semanticLabel: 'Button',
-                  onPressed: () {},
-                ),
-              ),
-              WidgetPreview(
-                text: 'AppButton.from()',
-                widget: AppButton.from(
-                  text: 'Button',
-                  expand: true,
-                  onPressed: () {},
-                ),
-              ),
-            ],
-          ),
-          ExpansionTile(
-            title: Text('Platform Widgets: Android'),
-            children: [
-              WidgetPreview(
-                text: 'Activity Indicator',
-                widget: _a.createActivityIndicator().render(),
-              ),
-              WidgetPreview(
-                text: 'Bottom Bar',
-                widget: _a.createBottomBar().render(
-                  items: const [
-                    AppNavigationItem(
-                      icon: Icon(Icons.home),
-                      label: 'Home',
-                      location: '',
-                    ),
-                    AppNavigationItem(
-                      icon: Icon(Icons.dashboard),
-                      label: 'Dashboard',
-                      location: '',
-                    ),
-                    AppNavigationItem(
-                      icon: Icon(Icons.search),
-                      label: 'Search',
-                      location: '',
-                    ),
-                    AppNavigationItem(
-                      icon: Icon(Icons.settings),
-                      label: 'Settings',
-                      location: '',
-                    ),
-                  ],
-                  selectedIndex: 0,
-                  onSelected: (_) {},
-                ),
-              ),
-              WidgetPreview(
-                text: 'Navigation Bar',
-                widget: _a.createNavigationBar().render(title: 'Navbar'),
-              ),
-              WidgetPreview(
-                text: 'Popup',
-                widget: _a.createPopup().render(
-                      title: 'Popup',
-                      msg: 'This is a popup',
-                      onOk: () {},
-                    ),
-              ),
-              WidgetPreview(
-                text: 'Switch',
-                widget: _a.createSwitch().render(
-                      value: switchValue,
-                      onChanged: (v) => setState(() => switchValue = v!),
-                    ),
-              ),
-              WidgetPreview(
-                text: 'TextField',
-                widget: _a.createTextField().render(
-                      controller: textEditingController,
-                      hintText: 'Text',
-                      validator: (v) => v,
-                    ),
-              ),
-              WidgetPreview(
-                text: 'TimePicker',
-                widget: SizedBox(
-                  width: 200,
-                  height: 150,
-                  child: _a.createTimePicker().render(
-                        startTime: TimeOfDay.now(),
-                        onChanged: (v) {},
-                      ),
-                ),
-              ),
-            ],
-          ),
-          ExpansionTile(
-            title: Text('Platform Widgets: iOS'),
-            children: [
-              WidgetPreview(
-                text: 'Activity Indicator',
-                widget: _i.createActivityIndicator().render(),
-              ),
-              WidgetPreview(
-                text: 'Bottom Bar',
-                widget: _i.createBottomBar().render(
-                  items: const [
-                    AppNavigationItem(
-                      icon: Icon(Icons.home),
-                      label: 'Home',
-                      location: '',
-                    ),
-                    AppNavigationItem(
-                      icon: Icon(Icons.dashboard),
-                      label: 'Dashboard',
-                      location: '',
-                    ),
-                    AppNavigationItem(
-                      icon: Icon(Icons.search),
-                      label: 'Search',
-                      location: '',
-                    ),
-                    AppNavigationItem(
-                      icon: Icon(Icons.settings),
-                      label: 'Settings',
-                      location: '',
-                    ),
-                  ],
-                  selectedIndex: 0,
-                  onSelected: (_) {},
-                ),
-              ),
-              WidgetPreview(
-                text: 'Navigation Bar',
-                widget: _i.createNavigationBar().render(title: 'Navbar'),
-              ),
-              WidgetPreview(
-                text: 'Popup',
-                widget: _i.createPopup().render(
-                      title: 'Popup',
-                      msg: 'This is a popup',
-                      onOk: () {},
-                    ),
-              ),
-              WidgetPreview(
-                text: 'Switch',
-                widget: _i.createSwitch().render(
-                      value: switchValue,
-                      onChanged: (v) => setState(() => switchValue = v!),
-                    ),
-              ),
-              WidgetPreview(
-                text: 'TextField',
-                widget: _i.createTextField().render(
-                      controller: textEditingController,
-                      hintText: 'Text',
-                      validator: (v) => v,
-                    ),
-              ),
-              WidgetPreview(
-                text: 'TimePicker',
-                widget: SizedBox(
-                  width: 200,
-                  height: 150,
-                  child: _i.createTimePicker().render(
-                        startTime: TimeOfDay.now(),
-                        onChanged: (v) {},
-                      ),
-                ),
-              ),
-            ],
-          ),
+          // ExpansionTile(
+          //   title: Text('Buttons'),
+          //   children: [
+          //     WidgetPreview(
+          //       text: 'AppButton.text()',
+          //       widget: AppButton.text(
+          //         text: 'Button',
+          //         onPressed: () {},
+          //       ),
+          //     ),
+          //     WidgetPreview(
+          //       text: 'AppButton.filled()',
+          //       widget: AppButton.filled(
+          //         text: 'Button',
+          //         onPressed: () {},
+          //       ),
+          //     ),
+          //     WidgetPreview(
+          //       text: 'AppButton.icon()',
+          //       widget: AppButton.icon(
+          //         icon: Icon(Icons.ads_click),
+          //         semanticLabel: 'Button',
+          //         onPressed: () {},
+          //       ),
+          //     ),
+          //     WidgetPreview(
+          //       text: 'AppButton.from()',
+          //       widget: AppButton.from(
+          //         text: 'Button',
+          //         expand: true,
+          //         onPressed: () {},
+          //       ),
+          //     ),
+          //   ],
+          // ),
+          // ExpansionTile(
+          //   title: Text('Platform Widgets: Android'),
+          //   children: [
+          //     WidgetPreview(
+          //       text: 'Activity Indicator',
+          //       widget: _a.createActivityIndicator().render(),
+          //     ),
+          //     WidgetPreview(
+          //       text: 'Bottom Bar',
+          //       widget: _a.createBottomBar().render(
+          //         items: const [
+          //           AppNavigationItem(
+          //             icon: Icon(Icons.home),
+          //             label: 'Home',
+          //             location: '',
+          //           ),
+          //           AppNavigationItem(
+          //             icon: Icon(Icons.dashboard),
+          //             label: 'Dashboard',
+          //             location: '',
+          //           ),
+          //           AppNavigationItem(
+          //             icon: Icon(Icons.search),
+          //             label: 'Search',
+          //             location: '',
+          //           ),
+          //           AppNavigationItem(
+          //             icon: Icon(Icons.settings),
+          //             label: 'Settings',
+          //             location: '',
+          //           ),
+          //         ],
+          //         selectedIndex: 0,
+          //         onSelected: (_) {},
+          //       ),
+          //     ),
+          //     WidgetPreview(
+          //       text: 'Navigation Bar',
+          //       widget: _a.createNavigationBar().render(title: 'Navbar'),
+          //     ),
+          //     WidgetPreview(
+          //       text: 'Popup',
+          //       widget: _a.createPopup().render(
+          //             title: 'Popup',
+          //             msg: 'This is a popup',
+          //             onOk: () {},
+          //           ),
+          //     ),
+          //     WidgetPreview(
+          //       text: 'Switch',
+          //       widget: _a.createSwitch().render(
+          //             value: switchValue,
+          //             onChanged: (v) => setState(() => switchValue = v!),
+          //           ),
+          //     ),
+          //     WidgetPreview(
+          //       text: 'TextField',
+          //       widget: _a.createTextField().render(
+          //             controller: textEditingController,
+          //             hintText: 'Text',
+          //             validator: (v) => v,
+          //           ),
+          //     ),
+          //     WidgetPreview(
+          //       text: 'TimePicker',
+          //       widget: SizedBox(
+          //         width: 200,
+          //         height: 150,
+          //         child: _a.createTimePicker().render(
+          //               startTime: TimeOfDay.now(),
+          //               onChanged: (v) {},
+          //             ),
+          //       ),
+          //     ),
+          //   ],
+          // ),
+          // ExpansionTile(
+          //   title: Text('Platform Widgets: iOS'),
+          //   children: [
+          //     WidgetPreview(
+          //       text: 'Activity Indicator',
+          //       widget: _i.createActivityIndicator().render(),
+          //     ),
+          //     WidgetPreview(
+          //       text: 'Bottom Bar',
+          //       widget: _i.createBottomBar().render(
+          //         items: const [
+          //           AppNavigationItem(
+          //             icon: Icon(Icons.home),
+          //             label: 'Home',
+          //             location: '',
+          //           ),
+          //           AppNavigationItem(
+          //             icon: Icon(Icons.dashboard),
+          //             label: 'Dashboard',
+          //             location: '',
+          //           ),
+          //           AppNavigationItem(
+          //             icon: Icon(Icons.search),
+          //             label: 'Search',
+          //             location: '',
+          //           ),
+          //           AppNavigationItem(
+          //             icon: Icon(Icons.settings),
+          //             label: 'Settings',
+          //             location: '',
+          //           ),
+          //         ],
+          //         selectedIndex: 0,
+          //         onSelected: (_) {},
+          //       ),
+          //     ),
+          //     WidgetPreview(
+          //       text: 'Navigation Bar',
+          //       widget: _i.createNavigationBar().render(title: 'Navbar'),
+          //     ),
+          //     WidgetPreview(
+          //       text: 'Popup',
+          //       widget: _i.createPopup().render(
+          //             title: 'Popup',
+          //             msg: 'This is a popup',
+          //             onOk: () {},
+          //           ),
+          //     ),
+          //     WidgetPreview(
+          //       text: 'Switch',
+          //       widget: _i.createSwitch().render(
+          //             value: switchValue,
+          //             onChanged: (v) => setState(() => switchValue = v!),
+          //           ),
+          //     ),
+          //     WidgetPreview(
+          //       text: 'TextField',
+          //       widget: _i.createTextField().render(
+          //             controller: textEditingController,
+          //             hintText: 'Text',
+          //             validator: (v) => v,
+          //           ),
+          //     ),
+          //     WidgetPreview(
+          //       text: 'TimePicker',
+          //       widget: SizedBox(
+          //         width: 200,
+          //         height: 150,
+          //         child: _i.createTimePicker().render(
+          //               startTime: TimeOfDay.now(),
+          //               onChanged: (v) {},
+          //             ),
+          //       ),
+          //     ),
+          //   ],
+          // ),
         ],
       ),
     );

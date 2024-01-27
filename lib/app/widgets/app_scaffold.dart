@@ -21,18 +21,33 @@ class AppScaffold extends StatefulWidget {
 class _AppScaffoldState extends State<AppScaffold> {
   final tabs = <AppNavigationItem>[
     AppNavigationItem(
-      icon: const Icon(Icons.home),
-      label: 'Home',
-      location: ScreenPaths.home,
+      icon: Image.asset('assets/images/products.png', height: 24),
+      selectedIcon: Image.asset(
+        'assets/images/products.png',
+        height: 24,
+        color: colors.lavenderGrey,
+      ),
+      label: 'Товари',
+      location: ScreenPaths.products,
     ),
     AppNavigationItem(
-      icon: const Icon(Icons.info),
-      label: 'Info',
-      location: ScreenPaths.info,
+      icon: Image.asset('assets/images/orders.png', height: 24),
+      selectedIcon: Image.asset(
+        'assets/images/orders.png',
+        height: 24,
+        color: colors.lavenderGrey,
+      ),
+      label: 'Замовлення',
+      location: ScreenPaths.orders,
     ),
     AppNavigationItem(
-      icon: const Icon(Icons.settings),
-      label: 'Settings',
+      icon: Image.asset('assets/images/statistics.png', height: 24),
+      selectedIcon: Image.asset(
+        'assets/images/statistics.png',
+        height: 24,
+        color: colors.lavenderGrey,
+      ),
+      label: 'Статистика',
       location: ScreenPaths.settings,
     ),
   ];
@@ -56,9 +71,11 @@ class _AppScaffoldState extends State<AppScaffold> {
 // Custom BottomNavigationBarItem implementation to allow for named routes
 class AppNavigationItem extends NavigationDestination {
   final String location;
+
   const AppNavigationItem(
       {super.key,
       required this.location,
       required super.icon,
+      super.selectedIcon,
       required super.label});
 }
