@@ -25,7 +25,7 @@ dependencies:
   firebase_core: ^2.13.1
   firebase_auth: ^4.6.2
   cloud_firestore: ^4.8.0
-  supabase_flutter: ^1.10.1
+  supabase_flutter: ^2.2.0
   json_annotation: ^4.8.1
   get_it: ^7.6.0
   mocktail: ^0.3.0

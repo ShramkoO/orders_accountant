@@ -19,7 +19,9 @@ class AuthService implements IAuthService {
 
   @override
   Future<void> init() async {
-    final session = await SupabaseAuth.instance.initialSession;
+    final supabase = Supabase.instance.client;
+
+    final session = supabase.auth.currentSession;
 
     if (session == null) {
       appAuthStatusStreamController.add(AppAuthStatus.unauthenticated);
@@ -56,11 +58,11 @@ class AuthService implements IAuthService {
   @override
   Future<void> signInWithGoogle(
       {required String idToken, required String nonce}) async {
-    await _auth.signInWithIdToken(
-      provider: Provider.google,
-      idToken: idToken,
-      nonce: nonce,
-    );
+    // await _auth.signInWithIdToken(
+    //   provider: Provider.google,
+    //   idToken: idToken,
+    //   nonce: nonce,
+    // );
   }
 
   @override

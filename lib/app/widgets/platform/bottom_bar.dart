@@ -39,7 +39,7 @@ class IosBottomBar implements IBottomBar {
   }) {
     return CupertinoTabBar(
       items: items
-          .map((t) => BottomNavigationBarItem(
+          .map((AppNavigationItem t) => BottomNavigationBarItem(
               icon: t.icon, label: t.label, activeIcon: t.selectedIcon))
           .toList(),
       currentIndex: selectedIndex,

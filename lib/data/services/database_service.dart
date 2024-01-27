@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:orders_accountant/core/resources/supabase_tables.dart';
 import 'package:orders_accountant/data/dto/app_user_dto.dart';
 import 'package:orders_accountant/domain/models/app_user.dart';
@@ -18,11 +20,16 @@ class DatabaseService implements IDatabaseService {
       final (Map<String, dynamic> data) = await _supabaseClient
           .from(profileTable.tableName)
           .select()
-          .eq('id', _supabaseClient.auth.currentUser?.id)
+          .eq('id', _supabaseClient.auth.currentUser?.id ?? '')
           .single();
       return AppUserDto.fromMap(data);
     } catch (error, stackTrace) {
-      throw Error.throwWithStackTrace(error, stackTrace);
+      print('catched');
+
+      //in order to get better valuable stacktrace error is thrown a new
+
+      //throw Error.throwWithStackTrace(error, stackTrace);
+      throw error.toString();
     }
   }
 

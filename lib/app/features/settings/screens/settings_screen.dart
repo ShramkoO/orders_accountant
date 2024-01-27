@@ -30,7 +30,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   onToggle: (bool v) => settingsCubit.changeTheme(v),
                 ),
                 SettingsTile.switchTile(
-                  enabled: !PlatformInfo.isIOS,
+                  enabled: true, //!PlatformInfo.isIOS,
                   initialValue: state.forceIos,
                   onToggle: (val) => settingsCubit.forceIos(val),
                   title: const Text('iOS Mode'),

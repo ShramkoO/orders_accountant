@@ -7,6 +7,7 @@ class SupabaseService {
   SupabaseClient get client => Supabase.instance.client;
 
   static Future<SupabaseService> init() async {
+    print(dotenv.env['SUPABASE_URL']);
     await Supabase.initialize(
       url: dotenv.env['SUPABASE_URL']!,
       anonKey: dotenv.env['SUPABASE_ANON_KEY']!,
