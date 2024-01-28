@@ -8,6 +8,10 @@ import 'package:orders_accountant/app/features/settings/cubit/settings_cubit.dar
 import 'package:orders_accountant/app/features/startup/cubit/startup_cubit.dart';
 import 'package:orders_accountant/app/widgets/platform/platform_widget_factory.dart';
 import 'package:orders_accountant/core/constants/common_libs.dart';
+import 'package:orders_accountant/data/services/supabase_service.dart';
+import 'package:orders_accountant/domain/repositories/categories_repository.dart';
+import 'package:orders_accountant/domain/repositories/orders_repository.dart';
+import 'package:orders_accountant/domain/repositories/products_repository.dart';
 import 'package:orders_accountant/orders_accountant_app.dart';
 import 'package:orders_accountant/core/logic/locale_logic.dart';
 import 'package:orders_accountant/data/repositories/user_repository.dart';
@@ -15,6 +19,7 @@ import 'package:orders_accountant/app/features/user_info/cubit/user_info_cubit.d
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

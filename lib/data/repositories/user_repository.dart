@@ -38,9 +38,9 @@ class UserRepository extends BaseRepository implements IUserRepository {
   Future<void> init() async {
     _authService.appAuthStatusStream.listen((AppAuthStatus status) async {
       if (status == AppAuthStatus.authenticated) {
-        final AppUser user = await _databaseService.getUser();
-        _currentUser = user;
-        userStreamController.add(user);
+        // final AppUser user = await _databaseService.getUser();
+        // _currentUser = user;
+        // userStreamController.add(user);
       } else if (status == AppAuthStatus.unauthenticated) {
         _currentUser = null;
         userStreamController.add(null);
