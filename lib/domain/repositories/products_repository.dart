@@ -9,7 +9,7 @@ class ProductsRepository {
 
   Future<List<Product>> getProducts() async {
     final List<Map<String, dynamic>> data =
-        await _supabaseClient.from('categories').select();
+        await _supabaseClient.from('products').select();
     print(data);
     return data.map((e) => Product.fromJson(e)).toList();
   }

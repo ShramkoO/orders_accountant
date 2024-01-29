@@ -1,4 +1,8 @@
-class Category {
+class CustomTreeNode {
+  const CustomTreeNode();
+}
+
+class Category extends CustomTreeNode {
   final String id;
   final DateTime createdAt;
   final String displayText;

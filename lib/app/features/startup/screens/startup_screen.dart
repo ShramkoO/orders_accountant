@@ -21,18 +21,18 @@ class _StartupScreenState extends State<StartupScreen>
   String _imgUrl = Assets.cuckoo;
 
   Future<void> _blink() async {
-    await Future.delayed(const Duration(milliseconds: 1000), () {
-      setState(() => _imgUrl = Assets.cuckooBlink);
-    });
-    await Future.delayed(const Duration(milliseconds: 100), () {
-      setState(() => _imgUrl = Assets.cuckoo);
-    });
     await Future.delayed(const Duration(milliseconds: 300), () {
       setState(() => _imgUrl = Assets.cuckooBlink);
     });
-    await Future.delayed(const Duration(milliseconds: 100), () {
+    await Future.delayed(const Duration(milliseconds: 150), () {
       setState(() => _imgUrl = Assets.cuckoo);
     });
+    // await Future.delayed(const Duration(milliseconds: 150), () {
+    //   setState(() => _imgUrl = Assets.cuckooBlink);
+    // });
+    // await Future.delayed(const Duration(milliseconds: 50), () {
+    //   setState(() => _imgUrl = Assets.cuckoo);
+    // });
   }
 
   @override
@@ -40,7 +40,7 @@ class _StartupScreenState extends State<StartupScreen>
     super.initState();
 
     _controller = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 1500));
+        vsync: this, duration: const Duration(milliseconds: 500));
     _animation = CurvedAnimation(parent: _controller, curve: Curves.elasticOut);
 
     if (!startupCubit.state.startupFinished) {
@@ -49,7 +49,7 @@ class _StartupScreenState extends State<StartupScreen>
 
       Future.wait([
         startupCubit.initialStartup,
-        Future.delayed(const Duration(seconds: 2)),
+        Future.delayed(const Duration(milliseconds: 700)),
       ]).then((responses) {
         startupCubit.finishStartup();
         if (authCubit.state is PasswordRecovery) {

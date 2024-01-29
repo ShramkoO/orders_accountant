@@ -16,4 +16,8 @@ class SupabaseService {
 
     return SupabaseService();
   }
+
+  String getImageUrl(String path) {
+    return client.storage.from('files').getPublicUrl(path);
+  }
 }

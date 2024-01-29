@@ -10,6 +10,7 @@ class CategoriesRepository {
   Future<List<Category>> getCategories() async {
     final List<Map<String, dynamic>> data =
         await _supabaseClient.from('categories').select();
+    print('categiories received');
     print(data);
     return data.map((e) => Category.fromJson(e)).toList();
   }

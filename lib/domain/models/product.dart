@@ -1,5 +1,7 @@
-class Product {
-  final BigInt id;
+import 'package:orders_accountant/domain/models/category.dart';
+
+class Product extends CustomTreeNode {
+  final int id;
   final DateTime createdAt;
   final String name;
   final String displayName;
@@ -25,16 +27,16 @@ class Product {
 
   factory Product.fromJson(Map<String, dynamic> json) {
     return Product(
-      id: BigInt.parse(json['id'].toString()),
+      id: json['id'],
       createdAt: DateTime.parse(json['created_at']),
-      name: json['name'] as String,
-      displayName: json['display_name'] as String,
-      price: json['price'].toDouble(),
-      costPrice: json['cost_price'].toDouble(),
-      type: json['type'] as int,
-      details: json['details'] as Map<String, dynamic>,
-      category: json['category'] as String,
-      imageUrl: json['image_url'] as String,
+      name: json['name'] ?? '!!no name',
+      displayName: json['display_name'] ?? '!!no name',
+      price: (json['price'] ?? 0.0) / 1,
+      costPrice: (json['cost_price'] ?? 0.0) / 1,
+      type: json['type'] ?? 0,
+      details: (json['details'] ?? <String, dynamic>{}) as Map<String, dynamic>,
+      category: json['category'] ?? '',
+      imageUrl: json['image_url'] ?? '',
     );
   }
 

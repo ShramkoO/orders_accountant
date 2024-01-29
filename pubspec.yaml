@@ -35,6 +35,7 @@ dependencies:
   animated_check: ^1.0.5
   settings_ui: ^2.0.2
   bloc_test: ^9.1.5
+  animated_tree_view: ^2.2.0
 
 dev_dependencies:
   flutter_test:

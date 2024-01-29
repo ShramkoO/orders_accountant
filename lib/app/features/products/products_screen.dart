@@ -1,4 +1,5 @@
 import 'package:orders_accountant/app/features/products/cubit/products_cubit.dart';
+import 'package:orders_accountant/app/features/products/widgets/products_tree_view.dart';
 import 'package:orders_accountant/core/constants/common_libs.dart';
 import 'package:orders_accountant/app/features/user_info/cubit/user_info_cubit.dart';
 import 'package:orders_accountant/app/widgets/app_modals.dart';
@@ -23,51 +24,9 @@ class _ProductsScreenState extends State<ProductsScreen> {
         if (state is ProductsLoading) {
           return const Center(child: CircularProgressIndicator.adaptive());
         }
-        return SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.all(styles.insets.body),
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  AppButton.filled(
-                    onPressed: () {
-                      userInfoCubit.showSnackbar(
-                        message: 'This is a snackbar',
-                        severity: MessageSeverity.info,
-                      );
-                    },
-                    text: 'show snackbar',
-                  ),
-                  Gap(styles.insets.sm),
-                  AppButton.from(
-                    onPressed: () async {
-                      await widgets.createPopup().show(
-                            context: context,
-                            title: 'Popup',
-                            msg: 'This is a popup',
-                          );
-                    },
-                    text: 'show popup',
-                  ),
-                  Gap(styles.insets.sm),
-                  AppButton.from(
-                    onPressed: () async {
-                      await showModal(
-                        context,
-                        child: const OkCancelModal(
-                          title: 'Modal',
-                          msg: 'This is a modal',
-                        ),
-                      );
-                    },
-                    expand: true,
-                    text: 'show modal',
-                  ),
-                ],
-              ),
-            ),
-          ),
+        return const Padding(
+          padding: EdgeInsets.all(16.0),
+          child: ProductsTreeView(),
         );
       },
     );
