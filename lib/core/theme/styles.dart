@@ -65,6 +65,9 @@ extension TextStyleHelpers on TextStyle {
   /// The same TextStyle but bold
   TextStyle get bold => copyWith(fontWeight: FontWeight.bold);
 
+  /// The same TextStyle but bold
+  TextStyle get semiBold => copyWith(fontWeight: FontWeight.w500);
+
   /// The same TextStyle but italic
   TextStyle get italic => copyWith(fontStyle: FontStyle.italic);
 

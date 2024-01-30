@@ -8,8 +8,10 @@ class ProductsRepository {
   final SupabaseClient _supabaseClient;
 
   Future<List<Product>> getProducts() async {
-    final List<Map<String, dynamic>> data =
-        await _supabaseClient.from('products').select();
+    final List<Map<String, dynamic>> data = await _supabaseClient
+        .from('products')
+        .select()
+        .order('display_name', ascending: true);
     print(data);
     return data.map((e) => Product.fromJson(e)).toList();
   }

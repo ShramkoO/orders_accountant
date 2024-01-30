@@ -21,6 +21,7 @@ class AndroidBottomBar implements IBottomBar {
   }) {
     return NavigationBarTheme(
       data: NavigationBarThemeData(
+        backgroundColor: colors.slateGrey,
         labelTextStyle: MaterialStateProperty.resolveWith<TextStyle>(
           (Set<MaterialState> states) => states.contains(MaterialState.selected)
               ? TextStyle(
@@ -29,11 +30,12 @@ class AndroidBottomBar implements IBottomBar {
         ),
       ),
       child: NavigationBar(
-        elevation: 1,
+        elevation: 20,
+        shadowColor: colors.darkSlateBlue,
         selectedIndex: selectedIndex,
         destinations: items,
         onDestinationSelected: onSelected,
-        height: 64,
+        height: 68,
       ),
     );
   }
@@ -61,6 +63,7 @@ class IosBottomBar implements IBottomBar {
       activeColor: colors.lavenderGrey,
       currentIndex: selectedIndex,
       inactiveColor: colors.periwinkleBlue,
+      backgroundColor: colors.slateGrey,
       onTap: onSelected,
       height: 64,
     );

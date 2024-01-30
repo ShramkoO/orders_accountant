@@ -35,31 +35,43 @@ class _ProductsTreeViewState extends State<ProductsTreeView> {
             treeIsBuilt = true;
           }
 
-          return TreeView.simpleTyped<CustomTreeNode, TreeNode<CustomTreeNode>>(
-            showRootNode: false,
-            expansionIndicatorBuilder: (context, node) =>
-                ChevronIndicator.rightDown(
-              tree: node,
-              color: Colors.blue[700],
-              padding: const EdgeInsets.all(8),
-            ),
-            indentation: const Indentation(
-                style: IndentStyle.roundJoint, thickness: 1.5),
-            expansionBehavior: ExpansionBehavior.collapseOthersAndSnapToTop,
-            onTreeReady: (controller) {
-              _controller = controller;
-              //if (true) controller.expandAllChildren(productsTree);
-            },
-            tree: productsTree,
-            builder: (context, node) {
-              if (node.data is Category) {
-                return _buildCategoryNode(node.data as Category);
-              } else if (node.data is Product) {
-                return _buildProductNode(node.data as Product);
-              } else {
-                return const Center(child: Text('Error'));
-              }
-            },
+          return Column(
+            children: [
+              Expanded(
+                child: TreeView.simpleTyped<CustomTreeNode,
+                    TreeNode<CustomTreeNode>>(
+                  showRootNode: false,
+                  expansionIndicatorBuilder: (context, node) =>
+                      ChevronIndicator.rightDown(
+                    tree: node,
+                    color: colors.lavenderGrey,
+                    padding: EdgeInsets.only(
+                        top: 13.25 + (node.key == 'stickers' ? 16 : 0),
+                        right: 6),
+                  ),
+                  indentation: Indentation(
+                    style: IndentStyle.roundJoint,
+                    thickness: 1.5,
+                    color: colors.periwinkleBlue,
+                  ),
+                  expansionBehavior: ExpansionBehavior.none,
+                  onTreeReady: (controller) {
+                    _controller = controller;
+                    //if (true) controller.expandAllChildren(productsTree);
+                  },
+                  tree: productsTree,
+                  builder: (context, node) {
+                    if (node.data is Category) {
+                      return _buildCategoryNode(node.data as Category);
+                    } else if (node.data is Product) {
+                      return _buildProductNode(node.data as Product);
+                    } else {
+                      return const Center(child: Text('Error'));
+                    }
+                  },
+                ),
+              ),
+            ],
           );
         } else {
           return const Center(child: Text('Error'));
@@ -127,37 +139,44 @@ class _ProductsTreeViewState extends State<ProductsTreeView> {
 
     print('building category node ${category.displayText}');
     return Container(
-        margin: const EdgeInsets.only(bottom: 4),
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
-            color: colors.darkSlateBlue),
-        width: 200,
-        padding: const EdgeInsets.all(12),
-        child: Row(
-          children: [
-            if (resolvedImageUrl.isNotEmpty)
-              Container(
-                padding: const EdgeInsets.all(1.5),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: colors.slateGrey,
-                  border: Border.all(color: colors.slateGrey),
-                ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(6.5),
-                  child: Image.network(
-                    resolvedImageUrl,
-                    width: 32,
-                    height: 32,
+      padding:
+          category.id == 'stickers/' ? const EdgeInsets.only(top: 16) : null,
+      child: Container(
+          margin: const EdgeInsets.only(bottom: 4),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8), color: colors.slateGrey),
+          width: 240,
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+          child: Row(
+            children: [
+              if (resolvedImageUrl.isNotEmpty)
+                Container(
+                  padding: const EdgeInsets.all(1.5),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    color: colors.slateGrey,
+                    border: Border.all(color: colors.slateGrey),
                   ),
-                ),
-              )
-            else
-              const Gap(32),
-            const Gap(8),
-            Text(category.displayText),
-          ],
-        ));
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(6.5),
+                    child: Image.network(
+                      resolvedImageUrl,
+                      width: 32,
+                      height: 32,
+                      fit: BoxFit.cover,
+                      cacheHeight: 128,
+                      cacheWidth: 128,
+                    ),
+                  ),
+                )
+              else
+                const Gap(32),
+              const Gap(8),
+              Text(category.displayText,
+                  style: textStyles.body.semiBold.c(colors.lavenderGrey)),
+            ],
+          )),
+    );
   }
 
   _buildProductNode(Product product) {
@@ -171,23 +190,52 @@ class _ProductsTreeViewState extends State<ProductsTreeView> {
     }
 
     return Container(
-        width: 200,
+        constraints: BoxConstraints(
+          minWidth: MediaQuery.of(context).size.width - 150 - 32,
+        ),
         margin: const EdgeInsets.only(bottom: 4),
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8), color: colors.slateGrey),
-        padding: const EdgeInsets.all(12),
+            color: colors.white,
+            borderRadius: BorderRadius.circular(8),
+            border: Border.all(color: colors.periwinkleBlue, width: 1.5)),
+        padding: const EdgeInsets.only(left: 8, top: 6, bottom: 6, right: 14),
         child: Row(
+          mainAxisSize: MainAxisSize.min,
           children: [
             if (resolvedImageUrl.isNotEmpty)
-              Image.network(
-                resolvedImageUrl,
-                width: 32,
-                height: 32,
+              Container(
+                //padding: const EdgeInsets.all(1),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  color: colors.slateGrey,
+                  border: Border.all(color: colors.periwinkleBlue, width: 1.5),
+                ),
+                alignment: Alignment.center,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(6.5),
+                  child: Image.network(
+                    resolvedImageUrl,
+                    width: 32,
+                    height: 32,
+                    fit: BoxFit.cover,
+                    cacheHeight: 128,
+                    cacheWidth: 128,
+                  ),
+                ),
               )
             else
-              const Gap(32),
+              Container(
+                height: 35,
+                width: 35,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  color: colors.darkSlateBlue,
+                  border: Border.all(color: colors.midnightBlue),
+                ),
+              ),
             const Gap(8),
-            Text(product.name),
+            Text(product.displayName,
+                style: textStyles.body.semiBold.c(colors.periwinkleBlue)),
           ],
         ));
   }

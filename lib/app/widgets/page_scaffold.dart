@@ -23,6 +23,7 @@ class _PageScaffoldState extends State<PageScaffold> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       extendBody: true,
+      backgroundColor: colors.greyLight,
       appBar: widget.hideAppBar
           ? null
           : widgets.createNavigationBar().render(

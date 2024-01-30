@@ -62,6 +62,7 @@ class _AppScaffoldState extends State<AppScaffold> {
               widget.navigationShell!.goBranch(i);
             },
           ),
+      backgroundColor: colors.greyLight,
       body: widget.navigationShell,
       resizeToAvoidBottomInset: false,
     );

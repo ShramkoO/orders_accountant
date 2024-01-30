@@ -1,4 +1,3 @@
-import 'package:orders_accountant/app/widgets/controls/buttons.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../../../core/constants/common_libs.dart';
@@ -17,7 +16,8 @@ class AndroidNavigationBar implements INavigationBar {
         // We can also style the status bar in here, but without access to the elevation property
         statusBarColor: Colors.transparent,
       ),
-      title: Text(title, style: textStyles.title),
+      backgroundColor: colors.slateGrey,
+      title: Text(title, style: textStyles.title.c(colors.lightGrey)),
       centerTitle: true,
       // foregroundColor: colors.black,
       elevation: 0,
@@ -33,6 +33,7 @@ class IosNavigationBar implements INavigationBar {
   PreferredSizeWidget render({required String title}) {
     return CupertinoNavigationBar(
       brightness: Brightness.dark,
+      backgroundColor: colors.slateGrey,
       middle: Text(title, style: textStyles.title),
       padding: EdgeInsetsDirectional.zero,
     );
