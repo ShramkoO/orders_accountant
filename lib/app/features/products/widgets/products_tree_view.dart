@@ -16,8 +16,6 @@ class ProductsTreeView extends StatefulWidget {
 }
 
 class _ProductsTreeViewState extends State<ProductsTreeView> {
-  late TreeViewController? _controller;
-
   final TreeNode<CustomTreeNode> productsTree = TreeNode.root();
   bool treeIsBuilt = false;
 
@@ -56,7 +54,6 @@ class _ProductsTreeViewState extends State<ProductsTreeView> {
                   ),
                   expansionBehavior: ExpansionBehavior.none,
                   onTreeReady: (controller) {
-                    _controller = controller;
                     //if (true) controller.expandAllChildren(productsTree);
                   },
                   tree: productsTree,

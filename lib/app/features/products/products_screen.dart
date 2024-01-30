@@ -2,7 +2,6 @@ import 'package:orders_accountant/app/features/products/cubit/products_cubit.dar
 import 'package:orders_accountant/app/features/products/widgets/products_tree_view.dart';
 import 'package:orders_accountant/core/constants/common_libs.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gap/gap.dart';
 
 class ProductsScreen extends StatefulWidget {
   // Every Screen should have a routeName, for safe access in the router

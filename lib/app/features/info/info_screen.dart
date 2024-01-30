@@ -1,6 +1,3 @@
-import 'package:orders_accountant/app/widgets/app_scaffold.dart';
-import 'package:orders_accountant/app/widgets/controls/buttons.dart';
-import 'package:orders_accountant/app/widgets/platform/platform_widget_factory.dart';
 import 'package:orders_accountant/core/constants/common_libs.dart';
 import 'package:gap/gap.dart';
 
@@ -14,8 +11,8 @@ class InfoScreen extends StatefulWidget {
 }
 
 class _InfoScreenState extends State<InfoScreen> {
-  final AndroidWidgetsFactory _a = const AndroidWidgetsFactory();
-  final IosWidgetsFactory _i = const IosWidgetsFactory();
+  // final AndroidWidgetsFactory _a = const AndroidWidgetsFactory();
+  // final IosWidgetsFactory _i = const IosWidgetsFactory();
 
   bool switchValue = false;
   final TextEditingController textEditingController = TextEditingController();

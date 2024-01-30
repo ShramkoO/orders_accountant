@@ -1,6 +1,5 @@
 import 'package:orders_accountant/main.dart';
 import 'package:orders_accountant/app/features/settings/cubit/settings_cubit.dart';
-import 'package:orders_accountant/core/utils/helpers/platform_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:settings_ui/settings_ui.dart';
