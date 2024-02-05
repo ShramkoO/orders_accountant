@@ -141,17 +141,18 @@ class _ProductsTreeViewState extends State<ProductsTreeView> {
       child: Container(
           margin: const EdgeInsets.only(bottom: 4),
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8), color: colors.slateGrey),
+              borderRadius: BorderRadius.circular(8),
+              color: colors.periwinkleBlue),
           width: 240,
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
           child: Row(
             children: [
               if (resolvedImageUrl.isNotEmpty)
                 Container(
-                  padding: const EdgeInsets.all(1.5),
+                  //padding: const EdgeInsets.all(1.5),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
-                    color: colors.slateGrey,
+                    color: colors.periwinkleBlue,
                     border: Border.all(color: colors.slateGrey),
                   ),
                   child: ClipRRect(
@@ -170,7 +171,7 @@ class _ProductsTreeViewState extends State<ProductsTreeView> {
                 const Gap(32),
               const Gap(8),
               Text(category.displayText,
-                  style: textStyles.body.semiBold.c(colors.lavenderGrey)),
+                  style: textStyles.body.semiBold.c(colors.white)),
             ],
           )),
     );

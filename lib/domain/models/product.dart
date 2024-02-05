@@ -1,5 +1,9 @@
 import 'package:orders_accountant/domain/models/category.dart';
 
+const kProduct = 0;
+const kPackaging = 1;
+const kGift = 2;
+
 class Product extends CustomTreeNode {
   final int id;
   final DateTime createdAt;

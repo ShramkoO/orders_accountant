@@ -1,12 +1,12 @@
 class Order {
-  final BigInt id;
+  final int id;
   final DateTime createdAt;
   final String? state;
-  final List<BigInt>? products;
-  final Map<String, dynamic>? productsDetailed;
-  final double? price;
-  final double? costPrice;
-  final BigInt? customer;
+  final List<int>? products;
+  final Map<int, Map<String, dynamic>>? productsDetailed;
+  final double price;
+  final double costPrice;
+  final String customer;
   final Map<String, dynamic>? details;
 
   const Order({
@@ -15,26 +15,23 @@ class Order {
     this.state,
     this.products,
     this.productsDetailed,
-    this.price,
-    this.costPrice,
-    this.customer,
+    required this.price,
+    required this.costPrice,
+    required this.customer,
     this.details,
   });
 
   factory Order.fromJson(Map<String, dynamic> json) {
     return Order(
-      id: BigInt.parse(json['id'].toString()),
+      id: json['id'],
       createdAt: DateTime.parse(json['created_at']),
       state: json['state'] as String?,
-      products: (json['products'] as List<dynamic>?)
-          ?.map((item) => BigInt.parse(item.toString()))
-          .toList(),
-      productsDetailed: json['products_detailed'] as Map<String, dynamic>?,
+      products: json['products'] as List<int>,
+      productsDetailed:
+          json['products_detailed'] as Map<int, Map<String, dynamic>>?,
       price: json['price']?.toDouble(),
       costPrice: json['cost_price']?.toDouble(),
-      customer: json['customer'] != null
-          ? BigInt.parse(json['customer'].toString())
-          : null,
+      customer: json['customer'] ?? '',
       details: json['details'] as Map<String, dynamic>?,
     );
   }
@@ -48,8 +45,34 @@ class Order {
       'products_detailed': productsDetailed,
       'price': price,
       'cost_price': costPrice,
-      'customer': customer?.toString(),
+      'customer': customer.toString(),
       'details': details,
     };
+  }
+
+  double get revenue => (price) - (costPrice);
+
+  Order copyWith({
+    int? id,
+    DateTime? createdAt,
+    String? state,
+    List<int>? products,
+    Map<int, Map<String, dynamic>>? productsDetailed,
+    double? price,
+    double? costPrice,
+    String? customer,
+    Map<String, dynamic>? details,
+  }) {
+    return Order(
+      id: id ?? this.id,
+      createdAt: createdAt ?? this.createdAt,
+      state: state ?? this.state,
+      products: products ?? this.products,
+      productsDetailed: productsDetailed ?? this.productsDetailed,
+      price: price ?? this.price,
+      costPrice: costPrice ?? this.costPrice,
+      customer: customer ?? this.customer,
+      details: details ?? this.details,
+    );
   }
 }

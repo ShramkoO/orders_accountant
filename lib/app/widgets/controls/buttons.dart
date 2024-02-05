@@ -104,6 +104,12 @@ class AppButton extends StatelessWidget {
           onPressed();
         },
         style: ButtonStyle(
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+            ),
+            elevation: ButtonStyleButton.allOrNull<double>(2),
             backgroundColor: ButtonStyleButton.allOrNull<Color>(bgColor)),
         child: child,
       );
