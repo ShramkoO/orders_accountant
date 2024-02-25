@@ -1,3 +1,4 @@
+import 'package:orders_accountant/app/features/orders/cubit/edit_order_cubit.dart';
 import 'package:orders_accountant/app/features/orders/cubit/orders_cubit.dart';
 import 'package:orders_accountant/app/features/products/cubit/products_cubit.dart';
 import 'package:orders_accountant/app/features/statistics/cubit/statistics_cubit.dart';
@@ -61,5 +62,7 @@ Future<void> configureInjection() async {
       ));
   locator.registerLazySingleton<OrdersCubit>(
       () => OrdersCubit(ordersRepository: locator()));
+  locator.registerLazySingleton<EditOrderCubit>(
+      () => EditOrderCubit(ordersRepository: locator()));
   locator.registerLazySingleton<StatisticsCubit>(() => StatisticsCubit());
 }

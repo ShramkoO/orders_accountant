@@ -28,7 +28,7 @@ class AppButton extends StatelessWidget {
           'Must include either text, icon or child',
         );
 
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final String? semanticLabel;
   final String? text;
   late final Widget? child;
@@ -59,9 +59,7 @@ class AppButton extends StatelessWidget {
         icon = null {
     _builder = (context) {
       return TextButton(
-        onPressed: () {
-          onPressed();
-        },
+        onPressed: onPressed,
         child: Text(
           text!,
           style: textStyle,
@@ -100,9 +98,7 @@ class AppButton extends StatelessWidget {
         );
       }
       return FilledButton(
-        onPressed: () {
-          onPressed();
-        },
+        onPressed: onPressed,
         style: ButtonStyle(
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
               RoundedRectangleBorder(
@@ -184,9 +180,7 @@ class AppButton extends StatelessWidget {
           );
       if (expand) content = Center(child: content);
       return TextButton(
-        onPressed: () {
-          onPressed();
-        },
+        onPressed: onPressed,
         style: style,
         child: content,
       );

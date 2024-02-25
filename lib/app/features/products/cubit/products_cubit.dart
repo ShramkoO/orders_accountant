@@ -33,6 +33,14 @@ class ProductsCubit extends Cubit<ProductsState> {
   void setLoading() {
     emit(ProductsLoading());
   }
+
+  Product getProductById(int id) {
+    final state = this.state;
+    if (state is ProductsLoaded) {
+      return state.products.firstWhere((element) => element.id == id);
+    }
+    throw Exception('Products not loaded');
+  }
 }
 
 abstract class ProductsState extends Equatable {

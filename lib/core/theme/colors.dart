@@ -21,7 +21,7 @@ class AppColors {
   final Color darkSlateBlue = const Color(0xFF152436);
   final Color jetBlack = const Color(0xFF000000);
   final Color slateGrey = const Color(0xFF514E67);
-  final Color lightGrey = const Color(0xFFD7D6D8);
+  final Color lightGrey = const Color(0xFFF2F1F0);
   final Color dustyPurple = const Color(0xFF886986);
   final Color oliveDrab = const Color(0xFF887969);
   final Color semiTransparentGrey = const Color(0xCCD7D6D8);

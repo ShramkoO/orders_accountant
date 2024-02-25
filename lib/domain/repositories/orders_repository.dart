@@ -19,4 +19,9 @@ class OrdersRepository {
     print(data);
     return data.map((e) => Order.fromJson(e)).toList();
   }
+
+  Future<bool> upsertOrder(Order order) async {
+    await _supabaseClient.from('orders').upsert(order.toJson());
+    return true;
+  }
 }

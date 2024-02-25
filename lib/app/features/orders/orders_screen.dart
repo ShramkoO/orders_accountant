@@ -1,4 +1,5 @@
 import 'package:gap/gap.dart';
+import 'package:orders_accountant/app/features/orders/cubit/edit_order_cubit.dart';
 import 'package:orders_accountant/app/features/orders/cubit/orders_cubit.dart';
 import 'package:orders_accountant/app/features/orders/edit_order_screen.dart';
 import 'package:orders_accountant/app/features/orders/widgets/date_selector.dart';
@@ -47,6 +48,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
               right: 24,
               child: FloatingActionButton(
                 onPressed: () {
+                  context.read<EditOrderCubit>().createOrder();
                   showEditOrderBottomSheet(context);
                 },
                 //label: const Text('Add'),

@@ -222,7 +222,7 @@ class OrderItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     late Color color;
-    switch (order.state) {
+    switch (order.status) {
       case 'completed':
         color = colors.steelGrey;
         break;

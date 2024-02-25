@@ -19,10 +19,6 @@ class OrdersCubit extends Cubit<OrdersState> {
     emit(state.update(orders: orders, isLoading: false));
   }
 
-  customerChanged(String customerName) {
-    emit(state.update(customerName: customerName));
-  }
-
   dateSelected(DateTime date) async {
     setLoading();
 

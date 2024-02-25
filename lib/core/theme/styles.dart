@@ -31,6 +31,7 @@ class _FontSizes {
   static double get title => 24;
   static double get body => 16;
   static double get bodySmall => 12;
+  static double get captionSmall => 10;
 }
 
 @immutable
@@ -58,6 +59,11 @@ class _Text {
   TextStyle get bodySmall => TextStyle(
         fontFamily: _FontFamilies.body,
         fontSize: _FontSizes.bodySmall,
+      );
+
+  TextStyle get captionSmall => TextStyle(
+        fontFamily: _FontFamilies.body,
+        fontSize: _FontSizes.captionSmall,
       );
 }
 

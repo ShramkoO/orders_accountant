@@ -19,6 +19,8 @@ class ProgressBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('maxPoints: $maxPoints');
+    print('livePoints: $livePoints');
     return SizedBox(
       width: length,
       child: Stack(
