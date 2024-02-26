@@ -1,5 +1,4 @@
-import 'dart:math';
-
+import 'package:orders_accountant/core/constants/common_libs.dart';
 import 'package:orders_accountant/core/resources/supabase_tables.dart';
 import 'package:orders_accountant/data/dto/app_user_dto.dart';
 import 'package:orders_accountant/domain/models/app_user.dart';
@@ -24,7 +23,8 @@ class DatabaseService implements IDatabaseService {
           .single();
       return AppUserDto.fromMap(data);
     } catch (error, stackTrace) {
-      print('catched');
+      debugPrint('catched');
+      debugPrint(stackTrace.toString());
 
       //in order to get better valuable stacktrace error is thrown a new
 

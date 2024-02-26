@@ -5,7 +5,6 @@ import 'package:orders_accountant/app/features/user_info/cubit/user_info_cubit.d
 import 'package:orders_accountant/domain/repositories/iuser_repository.dart';
 import 'package:orders_accountant/domain/services/iauth_service.dart';
 import 'package:orders_accountant/domain/services/idatabase_service.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mocktail/mocktail.dart';
 
 class MockDatabaseService extends Mock implements IDatabaseService {}

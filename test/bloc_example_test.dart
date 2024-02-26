@@ -2,8 +2,6 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:orders_accountant/app/features/user_info/cubit/user_info_cubit.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'mocks.dart';
-
 void main() {
   group('User Info Cubit', () {
     blocTest<UserInfoCubit, UserInfoState>(
