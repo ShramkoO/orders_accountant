@@ -223,10 +223,10 @@ class OrderItem extends StatelessWidget {
   Widget build(BuildContext context) {
     late Color color;
     switch (order.status) {
-      case 'completed':
+      case OrderStatus.completed:
         color = colors.steelGrey;
         break;
-      case 'pending':
+      case OrderStatus.pending:
         color = colors.lavenderGrey;
         break;
       default:
