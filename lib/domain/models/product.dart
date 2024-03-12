@@ -15,6 +15,8 @@ class Product extends CustomTreeNode {
   final Map<String, dynamic> details;
   final String category;
   final String imageUrl;
+  final int quantity;
+  final int quantityOrdered;
 
   const Product({
     required this.id,
@@ -27,6 +29,8 @@ class Product extends CustomTreeNode {
     required this.details,
     required this.category,
     required this.imageUrl,
+    required this.quantity,
+    required this.quantityOrdered,
   });
 
   factory Product.fromJson(Map<String, dynamic> json) {
@@ -41,6 +45,8 @@ class Product extends CustomTreeNode {
       details: (json['details'] ?? <String, dynamic>{}) as Map<String, dynamic>,
       category: json['category'] ?? '',
       imageUrl: json['image_url'] ?? '',
+      quantity: json['quantity'] ?? 0,
+      quantityOrdered: json['quantity_ordered'] ?? 0,
     );
   }
 
@@ -56,6 +62,52 @@ class Product extends CustomTreeNode {
       'details': details,
       'category': category,
       'image_url': imageUrl,
+      'quantity': quantity,
+      'quantity_ordered': quantityOrdered,
     };
+  }
+
+  //in Ukrainian
+  String getProductTypeName() {
+    switch (type) {
+      case kProduct:
+        return 'Товар';
+      case kPackaging:
+        return 'Упаковка';
+      case kGift:
+        return 'Подарунок';
+      default:
+        return 'Товар';
+    }
+  }
+
+  Product copyWith({
+    int? id,
+    DateTime? createdAt,
+    String? name,
+    String? displayName,
+    double? price,
+    double? costPrice,
+    int? type,
+    Map<String, dynamic>? details,
+    String? category,
+    String? imageUrl,
+    int? quantity,
+    int? quantityOrdered,
+  }) {
+    return Product(
+      id: id ?? this.id,
+      createdAt: createdAt ?? this.createdAt,
+      name: name ?? this.name,
+      displayName: displayName ?? this.displayName,
+      price: price ?? this.price,
+      costPrice: costPrice ?? this.costPrice,
+      type: type ?? this.type,
+      details: details ?? this.details,
+      category: category ?? this.category,
+      imageUrl: imageUrl ?? this.imageUrl,
+      quantity: quantity ?? this.quantity,
+      quantityOrdered: quantityOrdered ?? this.quantityOrdered,
+    );
   }
 }

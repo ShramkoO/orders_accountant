@@ -29,7 +29,9 @@ class _FontFamilies {
 class _FontSizes {
   static double get header => 28;
   static double get title => 24;
+  static double get title2 => 20;
   static double get body => 16;
+  static double get bodyCompact => 15;
   static double get bodySmall => 12;
   static double get captionSmall => 10;
 }
@@ -49,10 +51,22 @@ class _Text {
         fontSize: _FontSizes.title,
       );
 
+  TextStyle get title2 => TextStyle(
+        fontFamily: _FontFamilies.title,
+        fontSize: _FontSizes.title2,
+      );
+
   /// Main TextStyle for everything
   TextStyle get body => TextStyle(
         fontFamily: _FontFamilies.body,
         fontSize: _FontSizes.body,
+      );
+
+  /// Main TextStyle for everything
+  TextStyle get bodyCompactHeight => TextStyle(
+        fontFamily: _FontFamilies.body,
+        fontSize: _FontSizes.bodyCompact,
+        height: 1.1,
       );
 
   /// Smaller TextStyle for labels etc.

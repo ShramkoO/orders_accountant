@@ -11,6 +11,8 @@ class OrdersCubit extends Cubit<OrdersState> {
     init();
   }
 
+  DateTime selectedDate = DateTime.now();
+
   Future<void> init() async {
     setLoading();
 
@@ -20,13 +22,16 @@ class OrdersCubit extends Cubit<OrdersState> {
   }
 
   dateSelected(DateTime date) async {
+    selectedDate = date;
     setLoading();
 
     final List<Order> orders = await ordersRepository.getOrders(date);
 
-    await Future.delayed(const Duration(milliseconds: 1000));
-
     emit(state.update(orders: orders, isLoading: false));
+  }
+
+  refreshCurrentSelectedDateOrders() {
+    dateSelected(selectedDate);
   }
 
   final OrdersRepository ordersRepository;

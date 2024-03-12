@@ -1,10 +1,16 @@
 import 'package:orders_accountant/core/constants/common_libs.dart';
 
+enum AppTextFieldSize { normal, small }
+
 class AppTextField extends StatelessWidget {
   final TextEditingController? controller;
   final Function(String)? onChanged;
   final Widget? prefixIcon;
   final String error;
+  final String initialValue;
+  final EdgeInsets padding;
+  final TextInputType? keyboardType;
+  final AppTextFieldSize size;
 
   const AppTextField({
     super.key,
@@ -12,6 +18,10 @@ class AppTextField extends StatelessWidget {
     this.onChanged,
     this.prefixIcon,
     this.error = '',
+    this.initialValue = '',
+    this.padding = const EdgeInsets.symmetric(horizontal: 16),
+    this.keyboardType,
+    this.size = AppTextFieldSize.normal,
   });
 
   @override
@@ -20,6 +30,16 @@ class AppTextField extends StatelessWidget {
 
     final borderColor = error.isNotEmpty ? colors.red : colors.periwinkleBlue;
 
+    late double height;
+    switch (size) {
+      case AppTextFieldSize.normal:
+        height = 45;
+        break;
+      case AppTextFieldSize.small:
+        height = 35;
+        break;
+    }
+
     return AnimatedContainer(
       duration: const Duration(milliseconds: 200),
       child: Column(
@@ -27,9 +47,11 @@ class AppTextField extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            height: 45,
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: TextField(
+            height: height,
+            padding: padding,
+            child: TextFormField(
+                keyboardType: keyboardType,
+                initialValue: initialValue,
                 controller: controller,
                 onChanged: onChanged,
                 cursorOpacityAnimates: false,

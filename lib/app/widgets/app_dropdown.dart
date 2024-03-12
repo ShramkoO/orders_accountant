@@ -20,26 +20,37 @@ class AppDropdown extends StatelessWidget {
   Widget build(BuildContext context) {
     print('AppDropdown build');
     print('selectedValue: $selectedValue');
+
+    final dropdownBorder = OutlineInputBorder(
+      borderRadius: BorderRadius.circular(8),
+      borderSide: BorderSide(
+        color: colors.periwinkleBlue,
+        width: 1.5,
+      ),
+    );
+
     return Container(
       height: 45,
       margin: const EdgeInsets.symmetric(horizontal: 16),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(
-          color: colors.periwinkleBlue,
-          width: 1.5,
-        ),
-        color: colors.white,
-      ),
+      // decoration: BoxDecoration(
+      //   borderRadius: BorderRadius.circular(8),
+      //   border: Border.all(
+      //     color: colors.periwinkleBlue,
+      //     width: 1.5,
+      //   ),
+      //   color: colors.white,
+      // ),
       child: InputDecorator(
         decoration: InputDecoration(
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
+          border: dropdownBorder,
+          enabledBorder: dropdownBorder,
+          focusedBorder: dropdownBorder.copyWith(
             borderSide: BorderSide(
               color: colors.periwinkleBlue,
               width: 2,
             ),
           ),
+          disabledBorder: dropdownBorder,
           fillColor: colors.white,
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 16, vertical: 2),
@@ -68,7 +79,6 @@ class AppDropdown extends StatelessWidget {
               value: selectedValue,
               iconSize: 24,
               elevation: 16,
-              borderRadius: BorderRadius.circular(8),
             ),
           ),
         ),

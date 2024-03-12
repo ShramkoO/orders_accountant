@@ -87,6 +87,7 @@ class EditOrderScreen extends StatelessWidget {
                         const Gap(16),
                         const Label('Замовник'),
                         AppTextField(
+                          initialValue: state.order?.customer ?? '',
                           onChanged: (value) {
                             context
                                 .read<EditOrderCubit>()

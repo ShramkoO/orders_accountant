@@ -15,4 +15,13 @@ class ProductsRepository {
     print(data);
     return data.map((e) => Product.fromJson(e)).toList();
   }
+
+  Future<bool> updateProduct(Product product) async {
+    final response = await _supabaseClient
+        .from('products')
+        .update(product.toJson())
+        .eq('id', product.id);
+
+    return true;
+  }
 }

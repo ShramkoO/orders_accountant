@@ -2,6 +2,7 @@ import 'package:animated_tree_view/animated_tree_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:orders_accountant/app/features/products/cubit/products_cubit.dart';
+import 'package:orders_accountant/app/features/products/widgets/product_tree_item.dart';
 import 'package:orders_accountant/core/constants/common_libs.dart';
 import 'package:orders_accountant/core/di/locator.dart';
 import 'package:orders_accountant/data/services/supabase_service.dart';
@@ -16,6 +17,7 @@ class ProductsTreeView extends StatefulWidget {
     this.searchWord = '',
     this.selectedProduct,
     this.filterProductType,
+    required this.productsEditable,
   }) : super(key: key);
 
   final Function(Product)? onProductSelected;
@@ -23,13 +25,14 @@ class ProductsTreeView extends StatefulWidget {
   final String searchWord;
   final Product? selectedProduct;
   final int? filterProductType;
+  final bool productsEditable;
 
   @override
   State<ProductsTreeView> createState() => _ProductsTreeViewState();
 }
 
 class _ProductsTreeViewState extends State<ProductsTreeView> {
-  final TreeNode<CustomTreeNode> productsTree = TreeNode<CustomTreeNode>.root();
+  TreeNode<CustomTreeNode> productsTree = TreeNode<CustomTreeNode>.root();
   bool treeIsBuilt = false;
 
   DateTime lastItemTappedAt = DateTime.now();
@@ -41,7 +44,7 @@ class _ProductsTreeViewState extends State<ProductsTreeView> {
       //search word changed
       //rebuild tree
       treeIsBuilt = false;
-      productsTree.clear();
+      //productsTree.clear();
     }
     if (oldWidget.selectedProduct != widget.selectedProduct) {
       print('selected product changed');
@@ -56,12 +59,27 @@ class _ProductsTreeViewState extends State<ProductsTreeView> {
 
   String oldSearchWord = '';
 
+  String lastSelectedItemId = '';
   String selectedItemId = '';
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProductsCubit, ProductsState>(
+    return BlocConsumer<ProductsCubit, ProductsState>(
+      listenWhen: (p, c) {
+        if (p is ProductsLoaded && c is ProductsLoaded) {
+          print('p.products != c.products: ${p.products != c.products}');
+        }
+        return p is ProductsLoaded &&
+            c is ProductsLoaded &&
+            p.products != c.products;
+      },
+      listener: (context, state) => setState(() {
+        treeIsBuilt = false;
+        productsTree.clear();
+        print('products changed');
+      }),
       builder: (context, state) {
+        print('tree widget builder');
         if (state is ProductsLoading) {
           return const Center(child: CircularProgressIndicator());
         } else if (state is ProductsLoaded) {
@@ -98,8 +116,10 @@ class _ProductsTreeViewState extends State<ProductsTreeView> {
                   tree: productsTree,
                   onItemTap: (node) {
                     if (node.data is Product) {
-                      if (selectedItemId ==
-                              (node.data as Product).id.toString() &&
+                      if ((selectedItemId ==
+                                  (node.data as Product).id.toString() ||
+                              lastSelectedItemId ==
+                                  (node.data as Product).id.toString()) &&
                           DateTime.now()
                                   .difference(lastItemTappedAt)
                                   .inMilliseconds <
@@ -113,7 +133,14 @@ class _ProductsTreeViewState extends State<ProductsTreeView> {
                       //print('product tapped, id: ${(node.data as Product).id}');
                       widget.onProductSelected?.call(node.data as Product);
                       setState(() {
-                        selectedItemId = (node.data as Product).id.toString();
+                        if (selectedItemId ==
+                            (node.data as Product).id.toString()) {
+                          lastSelectedItemId = selectedItemId;
+                          selectedItemId = '';
+                        } else {
+                          selectedItemId = (node.data as Product).id.toString();
+                        }
+                        //selectedItemId = (node.data as Product).id.toString();
                       });
 
                       //detect double tap
@@ -141,6 +168,8 @@ class _ProductsTreeViewState extends State<ProductsTreeView> {
 
   void _buildTreeNodes(ProductsLoaded state) {
     //print('building tree nodes');
+
+    productsTree = TreeNode<CustomTreeNode>.root();
 
     for (Category category in state.categories) {
       final List<String> path = category.id.split('/');
@@ -268,85 +297,11 @@ class _ProductsTreeViewState extends State<ProductsTreeView> {
 
   _buildProductNode(Product product) {
     //print('building product node ${product.displayName}');
-
-    //resolve image url
-    String resolvedImageUrl = '';
-    if (product.imageUrl.isNotEmpty) {
-      resolvedImageUrl =
-          locator<SupabaseService>().getImageUrl(product.imageUrl);
-    }
-
     final bool isSelected = product.id.toString() == selectedItemId;
-    if (isSelected) print('(selected product: ${product.displayName})');
-
-    Color baseColor = colors.steelGrey;
-    if (product.type == kPackaging) {
-      baseColor = colors.oliveDrab;
-    } else if (product.type == kGift) {
-      baseColor = colors.dustyPurple;
-    }
-    return AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
-        height: isSelected ? 96 : 50,
-        constraints: BoxConstraints(
-          minWidth: MediaQuery.of(context).size.width - 150 - 32,
-        ),
-        margin: const EdgeInsets.only(bottom: 4),
-        decoration: BoxDecoration(
-            color: isSelected ? colors.lightGrey : colors.white,
-            borderRadius: BorderRadius.circular(8),
-            border: Border.all(color: colors.periwinkleBlue, width: 1.5)),
-        padding: const EdgeInsets.only(left: 8, top: 6, bottom: 6, right: 14),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                if (resolvedImageUrl.isNotEmpty)
-                  Container(
-                    height: 35,
-                    //padding: const EdgeInsets.all(1),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: colors.slateGrey,
-                      border: Border.all(color: baseColor, width: 1.5),
-                    ),
-                    alignment: Alignment.center,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(6.5),
-                      child: Image.network(
-                        resolvedImageUrl,
-                        width: 32,
-                        height: 32,
-                        fit: BoxFit.cover,
-                        cacheHeight: 128,
-                        cacheWidth: 128,
-                      ),
-                    ),
-                  )
-                else
-                  Container(
-                    height: 35,
-                    width: 35,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: baseColor,
-                      border: Border.all(color: baseColor),
-                    ),
-                    alignment: Alignment.center,
-                    child: Text(
-                      product.displayName[0],
-                      style: textStyles.body.bold.c(colors.white),
-                    ),
-                  ),
-                const Gap(8),
-                Text(product.displayName,
-                    style: textStyles.body.semiBold.c(colors.periwinkleBlue)),
-              ],
-            ),
-          ],
-        ));
+    return ProductTreeItem(
+      product: product,
+      isSelected: isSelected,
+      isEditable: widget.productsEditable,
+    );
   }
 }

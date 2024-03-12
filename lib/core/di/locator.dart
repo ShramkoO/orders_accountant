@@ -62,7 +62,7 @@ Future<void> configureInjection() async {
       ));
   locator.registerLazySingleton<OrdersCubit>(
       () => OrdersCubit(ordersRepository: locator()));
-  locator.registerLazySingleton<EditOrderCubit>(
-      () => EditOrderCubit(ordersRepository: locator()));
+  locator.registerLazySingleton<EditOrderCubit>(() =>
+      EditOrderCubit(ordersRepository: locator(), ordersCubit: locator()));
   locator.registerLazySingleton<StatisticsCubit>(() => StatisticsCubit());
 }

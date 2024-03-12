@@ -1,3 +1,7 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gap/gap.dart';
+import 'package:orders_accountant/app/features/orders/cubit/edit_order_cubit.dart';
+import 'package:orders_accountant/app/features/orders/edit_order_screen.dart';
 import 'package:orders_accountant/app/widgets/progress_bar.dart';
 import 'package:orders_accountant/core/constants/common_libs.dart';
 import 'package:orders_accountant/domain/models/order.dart';
@@ -39,6 +43,8 @@ class OrdersList extends StatelessWidget {
   }
 
   _buildSum() {
+    print('sum: $sum');
+    print('revenue: $revenue');
     return Container(
         padding: const EdgeInsets.symmetric(horizontal: 32),
         child: Column(
@@ -54,7 +60,7 @@ class OrdersList extends StatelessWidget {
                 ),
                 Text(
                   ' ${sum.toStringAsFixed(2)} грн',
-                  style: textStyles.body,
+                  style: textStyles.body.c(colors.steelGrey),
                 ),
               ],
             ),
@@ -71,7 +77,7 @@ class OrdersList extends StatelessWidget {
                 ),
                 Text(
                   '${revenue.toStringAsFixed(2)} грн',
-                  style: textStyles.bodySmall,
+                  style: textStyles.bodySmall.c(colors.steelGrey),
                 ),
               ],
             ),
@@ -103,10 +109,18 @@ class ListCard extends StatelessWidget {
 
     orders.sort((a, b) => (a.createdAt.compareTo(b.createdAt)));
 
+    final ordersDone =
+        orders.where((e) => e.status == OrderStatus.completed).toList();
+    final ordersPending =
+        orders.where((e) => e.status == OrderStatus.pending).toList();
+
+    final ordersToShow = [...ordersDone, ...ordersPending];
+
     double maxPrice = 0;
     for (int i = 0; i < orders.length; i++) {
       if (orders[i].price > maxPrice) maxPrice = orders[i].price;
     }
+    if (maxPrice == 0) maxPrice = 1;
 
     return RepaintBoundary(
       child: Container(
@@ -146,12 +160,19 @@ class ListCard extends StatelessWidget {
                             height: 80,
                             padding: const EdgeInsets.only(top: 29, left: 39),
                             child: Text('...список пустий',
-                                style: textStyles.body)),
+                                style: textStyles.body.c(colors.greyMedium))),
                       for (int i = 0; i < orders.length; i++)
                         OrderItem(
-                            order: orders.elementAt(i),
+                            order: ordersToShow.elementAt(i),
                             progress:
-                                (orders.elementAt(i).price / maxPrice) * 100),
+                                (ordersToShow.elementAt(i).price / maxPrice) *
+                                    100,
+                            onTap: () {
+                              context
+                                  .read<EditOrderCubit>()
+                                  .editOrder(ordersToShow[i]);
+                              showEditOrderBottomSheet(context);
+                            }),
                       Container(height: 24)
                     ],
                   ),
@@ -193,7 +214,8 @@ class ListCard extends StatelessWidget {
                                   ),
                                 ]),
                             alignment: Alignment.center,
-                            child: Text('0 / 0',
+                            child: Text(
+                                '${ordersDone.length} / ${orders.length}',
                                 style:
                                     textStyles.bodySmall.c(colors.steelGrey)),
                           ),
@@ -214,54 +236,67 @@ class OrderItem extends StatelessWidget {
     super.key,
     required this.order,
     required this.progress,
+    this.onTap,
   });
 
   final Order order;
   final double progress;
+  final Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
     late Color color;
+    late String iconAsset;
     switch (order.status) {
       case OrderStatus.completed:
         color = colors.steelGrey;
+        iconAsset = 'assets/images/order_done.png';
         break;
       case OrderStatus.pending:
-        color = colors.lavenderGrey;
+        color = colors.steelGrey.withOpacity(0.5);
+        iconAsset = 'assets/images/order_pending.png';
         break;
       default:
         colors.lavenderGrey;
     }
 
-    return Container(
-      height: 44,
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: Column(
-        children: [
-          Container(
-            height: 42.25,
-            child: Row(
-              children: [
-                Text(
-                    order.customer.isEmpty
-                        ? 'Замовлення №${order.id}'
-                        : order.customer,
-                    style: textStyles.body.c(color)),
-                Expanded(child: Container()),
-                Text(
-                  '${order.price} грн',
-                  style: textStyles.body,
-                )
-              ],
-            ),
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
+        child: Container(
+          height: 44,
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Column(
+            children: [
+              Container(
+                height: 42.25,
+                child: Row(
+                  children: [
+                    Image.asset(iconAsset, width: 24, height: 24, color: color),
+                    Gap(9),
+                    Text(
+                        order.customer.isEmpty
+                            ? 'Замовлення №${order.id}'
+                            : order.customer,
+                        style: textStyles.body.bold.c(color)),
+                    Expanded(child: Container()),
+                    Text(
+                      '${order.price} грн',
+                      style: textStyles.body.c(color),
+                    )
+                  ],
+                ),
+              ),
+              ProgressBar(
+                  maxPoints: 100,
+                  livePoints: progress,
+                  color: color,
+                  secondColor: colors.greyMedium,
+                  width: 1.75),
+            ],
           ),
-          ProgressBar(
-              maxPoints: 100,
-              livePoints: progress,
-              color: color,
-              secondColor: colors.greyMedium,
-              width: 1.75),
-        ],
+        ),
       ),
     );
   }

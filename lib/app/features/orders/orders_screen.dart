@@ -24,7 +24,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
         return Stack(
           children: [
             Padding(
-              padding: EdgeInsets.all(styles.insets.body),
+              padding: const EdgeInsets.all(12),
               child: Column(
                 children: [
                   const DateSelector(),
@@ -48,7 +48,8 @@ class _OrdersScreenState extends State<OrdersScreen> {
               right: 24,
               child: FloatingActionButton(
                 onPressed: () {
-                  context.read<EditOrderCubit>().createOrder();
+                  context.read<EditOrderCubit>().createNewOrder(
+                      dateTime: context.read<OrdersCubit>().selectedDate);
                   showEditOrderBottomSheet(context);
                 },
                 //label: const Text('Add'),

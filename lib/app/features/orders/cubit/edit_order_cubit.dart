@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:orders_accountant/app/features/orders/cubit/orders_cubit.dart';
 
 import 'package:orders_accountant/domain/models/order.dart';
 import 'package:orders_accountant/domain/models/product.dart';
@@ -7,19 +8,39 @@ import 'package:orders_accountant/domain/repositories/orders_repository.dart';
 
 class EditOrderCubit extends Cubit<EditOrderState> {
   final OrdersRepository ordersRepository;
-  EditOrderCubit({required this.ordersRepository})
-      : super(EditOrderState(isLoading: false));
+  final OrdersCubit ordersCubit;
 
-  createOrder() async {
-    print('createOrder');
+  EditOrderCubit({
+    required this.ordersCubit,
+    required this.ordersRepository,
+  }) : super(EditOrderState(isLoading: false));
+
+  createNewOrder({required DateTime dateTime}) async {
+    //if datetime is today - take it as is
+    //if datetime is not today - take it 10 minutes after the last order of the day
+
+    late DateTime newDateTime;
+
+    if (isToday(dateTime)) {
+      newDateTime = dateTime;
+    } else {
+      final ordersOfThatDay = List.from(ordersCubit.state.orders);
+      ordersOfThatDay.sort((a, b) => b.createdAt.compareTo(a.createdAt));
+      if (ordersOfThatDay.isEmpty) {
+        newDateTime = dateTime;
+      } else {
+        newDateTime =
+            ordersOfThatDay.first.createdAt.add(const Duration(minutes: 10));
+      }
+    }
     emit(
       state.update(
         order: Order(
-          id: 12345,
+          id: 0,
           status: OrderStatus.pending,
           products: [],
           productsDetailed: {},
-          createdAt: DateTime.now(),
+          createdAt: newDateTime,
           price: 0,
           costPrice: 0,
           customer: '',
@@ -28,6 +49,10 @@ class EditOrderCubit extends Cubit<EditOrderState> {
         productsError: '',
       ),
     );
+  }
+
+  editOrder(Order order) {
+    emit(state.update(order: order));
   }
 
   customerChanged(String customer) {
@@ -135,8 +160,23 @@ class EditOrderCubit extends Cubit<EditOrderState> {
       return false;
     }
     emit(state.update(customerError: '', productsError: ''));
+
+    //calculate price and costPrice
+    final Order? order = state.order;
+    if (order != null) {
+      double price = 0;
+      double costPrice = 0;
+      for (var product in order.productsDetailed!.values) {
+        price += product['price'] * product['quantity'];
+        costPrice += product['cost_price'] * product['quantity'];
+      }
+      emit(state.update(
+          order: order.copyWith(price: price, costPrice: costPrice)));
+    }
+
     print('saveOrder');
     await ordersRepository.upsertOrder(state.order!);
+    ordersCubit.refreshCurrentSelectedDateOrders();
     return true;
   }
 
@@ -193,4 +233,11 @@ class EditOrderState {
       productsError: productsError ?? this.productsError,
     );
   }
+}
+
+bool isToday(DateTime dateTime) {
+  final now = DateTime.now();
+  return dateTime.day == now.day &&
+      dateTime.month == now.month &&
+      dateTime.year == now.year;
 }

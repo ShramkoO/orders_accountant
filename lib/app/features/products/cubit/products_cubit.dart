@@ -41,6 +41,27 @@ class ProductsCubit extends Cubit<ProductsState> {
     }
     throw Exception('Products not loaded');
   }
+
+  updateProductQuantity(int id, int quantity) async {
+    final state = this.state;
+    if (state is ProductsLoaded) {
+      final Product product =
+          state.products.firstWhere((element) => element.id == id);
+      final updatedProduct = product.copyWith(quantity: quantity);
+      final updatedProducts = state.products.map((e) {
+        if (e.id == id) {
+          print('updating product: $updatedProduct');
+          print('updated product quantity: ${updatedProduct.quantity}');
+          return updatedProduct;
+        }
+        return e;
+      }).toList();
+      print('emitting updated products: $updatedProducts');
+      await productsRepository.updateProduct(updatedProduct);
+      emit(ProductsLoaded(
+          categories: state.categories, products: updatedProducts));
+    }
+  }
 }
 
 abstract class ProductsState extends Equatable {
@@ -57,4 +78,7 @@ class ProductsLoaded extends ProductsState {
   final List<Product> products;
 
   ProductsLoaded({required this.categories, required this.products});
+
+  @override
+  List<Object?> get props => [categories, products];
 }
