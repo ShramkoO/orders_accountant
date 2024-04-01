@@ -79,7 +79,7 @@ class Order {
     return Order(
       id: json['id'],
       createdAt: DateTime.parse(json['created_at']),
-      status: OrderStatusExtension.fromString(json['state']),
+      status: OrderStatusExtension.fromString(json['status']),
       products: (json['products'] as List<dynamic>).cast<int>(),
       productsDetailed: (json['products_detailed'] as Map<String, dynamic>)
           .cast<String,
@@ -95,7 +95,7 @@ class Order {
     return {
       if (id != 0) 'id': id.toString(),
       'created_at': createdAt.toIso8601String(),
-      'state': status.name,
+      'status': status.name,
       'products': products?.map((item) => item.toString()).toList(),
       'products_detailed': productsDetailed,
       'price': price,

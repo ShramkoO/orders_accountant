@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:gap/gap.dart';
 import 'package:orders_accountant/app/features/orders/cubit/edit_order_cubit.dart';
 import 'package:orders_accountant/app/features/orders/cubit/orders_cubit.dart';
@@ -23,24 +24,26 @@ class _OrdersScreenState extends State<OrdersScreen> {
       builder: (context, state) {
         return Stack(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(12),
-              child: Column(
-                children: [
-                  const DateSelector(),
-                  const Gap(16),
-                  if (state.isLoading)
-                    Expanded(
-                      child: Center(
-                        child: CircularProgressIndicator(
-                          valueColor:
-                              AlwaysStoppedAnimation<Color>(colors.accent1),
+            SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(12),
+                child: Column(
+                  children: [
+                    const DateSelector(),
+                    const Gap(16),
+                    if (state.isLoading)
+                      Expanded(
+                        child: Center(
+                          child: CircularProgressIndicator(
+                            valueColor:
+                                AlwaysStoppedAnimation<Color>(colors.accent1),
+                          ),
                         ),
-                      ),
-                    )
-                  else
-                    OrdersList(orders: state.orders)
-                ],
+                      )
+                    else
+                      OrdersList(orders: state.orders)
+                  ],
+                ),
               ),
             ),
             Positioned(
